@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>DevAgostini</title>
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="#141414" stroke="#333333" stroke-width="2"/>
+  <path
+    d="M15 10h22c13.5 0 21 8.2 17.9 22.2C51.6 46.8 42.1 54 27 54H6L15 10Zm9 13-7.8 18H28c7.2 0 11.5-3 12.9-9.1C42.2 26.2 39.1 23 33 23h-9Z"
+    fill="#050505"
+    fill-rule="evenodd"
+    opacity=".8"
+    transform="translate(1 2)"
+  />
+  <path
+    d="M15 10h22c13.5 0 21 8.2 17.9 22.2C51.6 46.8 42.1 54 27 54H6L15 10Zm9 13-7.8 18H28c7.2 0 11.5-3 12.9-9.1C42.2 26.2 39.1 23 33 23h-9Z"
+    fill="#e60039"
+    fill-rule="evenodd"
+    transform="translate(-2 1)"
+  />
+  <path
+    d="M15 10h22c13.5 0 21 8.2 17.9 22.2C51.6 46.8 42.1 54 27 54H6L15 10Zm9 13-7.8 18H28c7.2 0 11.5-3 12.9-9.1C42.2 26.2 39.1 23 33 23h-9Z"
+    fill="#fafafa"
+    fill-rule="evenodd"
+  />
+  <path d="M39 23h9.5l-9.8 18H29l4.1-7.4h5.6l3-5.4h-5.6L39 23Z" fill="#e60039"/>
+</svg>

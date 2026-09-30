@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-30T00:00:00Z",
+  "title": "Design System: Pedro de Agostini",
+  "extensions": {
+    "colorMeta": {
+      "stage-floor": { "role": "neutral", "displayName": "Stage Floor", "canonical": "#141414", "tonalRamp": ["#0a0a0a", "#141414", "#1f1f1f", "#333333", "#595959", "#8c8c8c", "#c4c4c4", "#f2f2f2"] },
+      "stage-air": { "role": "neutral", "displayName": "Stage Air", "canonical": "#1a1a1a", "tonalRamp": ["#0d0d0d", "#1a1a1a", "#262626", "#3a3a3a", "#5e5e5e", "#8f8f8f", "#c6c6c6", "#f2f2f2"] },
+      "surface": { "role": "neutral", "displayName": "Surface", "canonical": "#1f1f1f", "tonalRamp": ["#0f0f0f", "#1f1f1f", "#2b2b2b", "#3d3d3d", "#606060", "#909090", "#c7c7c7", "#f2f2f2"] },
+      "muted": { "role": "neutral", "displayName": "Muted", "canonical": "#262626", "tonalRamp": ["#121212", "#1c1c1c", "#262626", "#404040", "#636363", "#929292", "#c8c8c8", "#f2f2f2"] },
+      "line": { "role": "neutral", "displayName": "Hairline", "canonical": "#333333", "tonalRamp": ["#141414", "#1f1f1f", "#333333", "#4a4a4a", "#595959", "#8c8c8c", "#c4c4c4", "#f2f2f2"] },
+      "dim": { "role": "neutral", "displayName": "Dim Copy", "canonical": "#a6a6a6", "tonalRamp": ["#262626", "#404040", "#595959", "#737373", "#8c8c8c", "#a6a6a6", "#d4d4d4", "#f2f2f2"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#fafafa", "tonalRamp": ["#262626", "#404040", "#595959", "#8c8c8c", "#a6a6a6", "#cdcdcd", "#e6e6e6", "#fafafa"] },
+      "live": { "role": "primary", "displayName": "Live Crimson", "canonical": "#e60039", "tonalRamp": ["#33000d", "#4c0013", "#66001a", "#99002b", "#e60039", "#ff0a47", "#ff7b96", "#ffe0e7"] },
+      "live-deep": { "role": "primary", "displayName": "Crimson Shadow", "canonical": "#66001a", "tonalRamp": ["#33000d", "#4c0013", "#66001a", "#99002b", "#e60039", "#ff0a47", "#ff7b96", "#ffe0e7"] },
+      "live-shadow": { "role": "primary", "displayName": "Crimson Umbra", "canonical": "#4c0013", "tonalRamp": ["#33000d", "#4c0013", "#66001a", "#99002b", "#e60039", "#ff0a47", "#ff7b96", "#ffe0e7"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The opening line, the 'now presenting' title, the closing 'one more thing' title. One per scene." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles and project names in the reveal." },
+      "title": { "displayName": "Title", "purpose": "Spec-sheet keys, contact lead." },
+      "lead": { "displayName": "Lead", "purpose": "The supporting line under a headline, 28 to 36em max." },
+      "body": { "displayName": "Body", "purpose": "General copy and form text." },
+      "label": { "displayName": "Spec (Geist Mono)", "purpose": "Spec data only: counts, indices, categories, places, domains." }
+    },
+    "shadows": [
+      { "name": "live-glow", "value": "0 10px 30px -8px rgb(230 0 57 / 0.55), inset 0 1px 0 rgb(255 255 255 / 0.18)", "purpose": "Primary action at rest." },
+      { "name": "live-glow-hover", "value": "0 16px 44px -10px rgb(230 0 57 / 0.75), inset 0 1px 0 rgb(255 255 255 / 0.22)", "purpose": "Primary action on hover." },
+      { "name": "deep-drop", "value": "0 30px 60px -18px rgb(0 0 0 / 0.85)", "purpose": "Objects floating above the floor: index hover preview, portrait." },
+      { "name": "focus-halo", "value": "0 0 0 3px rgb(230 0 57 / 0.4)", "purpose": "Form fields on focus." },
+      { "name": "painted-spot", "value": "radial-gradient(ellipse 26% 90% at 50% 0%, rgb(255 244 240 / 0.12), transparent 74%)", "purpose": "Painted spot cone for scenes without the 3D stage." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "All CSS state transitions (0.3 to 0.6s)." },
+      { "name": "build-word", "value": "yPercent 108 -> 0, 1.3s expo.out, stagger 0.07s", "purpose": "Headlines rise word by word from below a clip mask." },
+      { "name": "lenis", "value": "lerp 0.085; anchor scroll 1.6s, 1 - (1 - t)^4", "purpose": "Damped page inertia and in-page jumps." },
+      { "name": "live-ping", "value": "2.4s ease-out infinite, scale 0.4 -> 1.6", "purpose": "Live indicator ring." },
+      { "name": "canvas-in", "value": "opacity 1.4s ease-out", "purpose": "Lights up the 3D stage on load." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "899px" },
+      { "name": "lg", "value": "1080px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Live Button",
+      "kind": "button",
+      "refersTo": "button-live",
+      "description": "Primary action (WhatsApp). The one crimson button.",
+      "html": "<a class=\"ds-btn ds-btn-live\" href=\"#\">Start a project <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 22px; border-radius: 4px; border: 1px solid transparent; font-family: var(--font-sans, 'Geist Variable', system-ui, sans-serif); font-weight: 550; font-size: 0.98rem; letter-spacing: -0.01em; text-decoration: none; cursor: pointer; white-space: nowrap; transition: background-color .35s cubic-bezier(0.16,1,0.3,1), border-color .35s cubic-bezier(0.16,1,0.3,1), box-shadow .5s cubic-bezier(0.16,1,0.3,1); } .ds-btn svg { width: 18px; height: 18px; transition: transform .45s cubic-bezier(0.16,1,0.3,1); } .ds-btn-live { background: var(--live, #e60039); color: #fff; box-shadow: 0 10px 30px -8px rgb(230 0 57 / .55), inset 0 1px 0 rgb(255 255 255 / .18); } .ds-btn-live:hover { background: #ff0a47; box-shadow: 0 16px 44px -10px rgb(230 0 57 / .75), inset 0 1px 0 rgb(255 255 255 / .22); } .ds-btn-live:hover svg { transform: translateX(3px); } .ds-btn:focus-visible { outline: 2px solid var(--live, #e60039); outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action: see the work, visit live site, profiles, form submit.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Visit live site <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 17 17 7M8 7h9v9\"/></svg></a>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 22px; border-radius: 4px; background: transparent; color: var(--ink, #fafafa); border: 1px solid var(--line, #333); font-family: var(--font-sans, 'Geist Variable', system-ui, sans-serif); font-weight: 550; font-size: 0.98rem; letter-spacing: -0.01em; text-decoration: none; transition: background-color .35s cubic-bezier(0.16,1,0.3,1), border-color .35s cubic-bezier(0.16,1,0.3,1); } .ds-btn-ghost svg { width: 18px; height: 18px; transition: transform .45s cubic-bezier(0.16,1,0.3,1); } .ds-btn-ghost:hover { border-color: #595959; background: rgb(255 255 255 / .03); } .ds-btn-ghost:hover svg { transform: translateX(3px); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--live, #e60039); outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Contact form field with dim label above.",
+      "html": "<label class=\"ds-field\"><span>Your name</span><input type=\"text\" placeholder=\"\"></label>",
+      "css": ".ds-field { display: grid; gap: 8px; font-family: var(--font-sans, 'Geist Variable', system-ui, sans-serif); } .ds-field span { font-size: .88rem; color: var(--dim, #a6a6a6); } .ds-field input { padding: 14px; font: inherit; font-size: 1rem; color: var(--ink, #fafafa); background: var(--surface, #1f1f1f); border: 1px solid var(--line, #333); border-radius: 4px; transition: border-color .3s cubic-bezier(0.16,1,0.3,1), box-shadow .3s cubic-bezier(0.16,1,0.3,1); } .ds-field input:hover { border-color: #4a4a4a; } .ds-field input:focus-visible { outline: none; border-color: var(--ink, #fafafa); box-shadow: 0 0 0 3px rgb(230 0 57 / .4); }"
+    },
+    {
+      "name": "Top Bar",
+      "kind": "nav",
+      "refersTo": "lang-toggle",
+      "description": "Fixed bar: wordmark, dim nav, EN/PT toggle, small live button. Frosted once scrolled.",
+      "html": "<header class=\"ds-topbar\"><a class=\"ds-wordmark\" href=\"#\">Pedro de Agostini</a><nav class=\"ds-topnav\"><a href=\"#\">Work</a><a href=\"#\">About</a><a href=\"#\">Contact</a></nav><div class=\"ds-lang\"><button class=\"ds-lang-opt is-on\">EN</button><button class=\"ds-lang-opt\">PT</button></div></header>",
+      "css": ".ds-topbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px 32px; background: rgb(20 20 20 / .72); backdrop-filter: blur(14px) saturate(1.2); border-bottom: 1px solid rgb(51 51 51 / .6); font-family: var(--font-sans, 'Geist Variable', system-ui, sans-serif); color: var(--ink, #fafafa); } .ds-wordmark { font-weight: 620; font-size: 1.02rem; letter-spacing: -.025em; color: inherit; text-decoration: none; } .ds-topnav { display: flex; gap: 30px; font-size: .93rem; } .ds-topnav a { color: var(--dim, #a6a6a6); text-decoration: none; transition: color .3s cubic-bezier(0.16,1,0.3,1); } .ds-topnav a:hover { color: var(--ink, #fafafa); } .ds-lang { display: inline-flex; padding: 3px; border: 1px solid var(--line, #333); border-radius: 4px; } .ds-lang-opt { border: 0; background: none; padding: 6px 10px; font: inherit; font-size: .78rem; font-weight: 550; letter-spacing: .02em; color: var(--dim, #a6a6a6); border-radius: 3px; cursor: pointer; } .ds-lang-opt.is-on { background: var(--line, #333); color: var(--ink, #fafafa); } .ds-lang-opt:focus-visible, .ds-topnav a:focus-visible { outline: 2px solid var(--live, #e60039); outline-offset: 3px; }"
+    },
+    {
+      "name": "Project Index Row",
+      "kind": "custom",
+      "refersTo": "index-row",
+      "description": "Hairline-ruled row: mono number, name, category, domain with live dot and arrow.",
+      "html": "<a class=\"ds-row\" href=\"#\"><span class=\"ds-row-name\"><span class=\"ds-mono ds-dim\">01</span>Shine House Home</span><span class=\"ds-mono ds-cat\">Cleaning</span><span class=\"ds-mono ds-dim ds-domain\"><span class=\"ds-dot\"></span>shinehouse.com<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\"><path d=\"M7 17 17 7M8 7h9v9\"/></svg></span></a>",
+      "css": ".ds-row { display: grid; grid-template-columns: 1.7fr 1fr 1.35fr; gap: 24px; align-items: center; padding: 24px 0; border-bottom: 1px solid var(--line, #333); color: var(--ink, #fafafa); text-decoration: none; font-family: var(--font-sans, 'Geist Variable', system-ui, sans-serif); } .ds-row-name { display: flex; align-items: baseline; gap: 18px; font-size: 1.6rem; font-weight: 560; letter-spacing: -.03em; line-height: 1.15; transition: transform .6s cubic-bezier(0.16,1,0.3,1); } .ds-row:hover .ds-row-name, .ds-row:focus-visible .ds-row-name { transform: translateX(10px); } .ds-mono { font-family: var(--font-mono, 'Geist Mono Variable', ui-monospace, monospace); font-size: .8125rem; letter-spacing: .01em; font-variant-numeric: tabular-nums; } .ds-dim { color: var(--dim, #a6a6a6); } .ds-cat { color: #d4d4d4; } .ds-domain { display: flex; align-items: center; justify-content: flex-end; gap: 10px; } .ds-domain svg { width: 18px; height: 18px; color: var(--ink, #fafafa); transition: transform .5s cubic-bezier(0.16,1,0.3,1), color .3s; } .ds-row:hover .ds-domain svg { color: var(--live, #e60039); transform: translate(2px,-2px); } .ds-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--live, #e60039); } .ds-row:focus-visible { outline: 2px solid var(--live, #e60039); outline-offset: 3px; }"
+    },
+    {
+      "name": "Spec Sheet Row",
+      "kind": "custom",
+      "refersTo": "index-row",
+      "description": "Key/value service row opened by a hairline rule.",
+      "html": "<div class=\"ds-spec\"><div class=\"ds-spec-k\">Design and build</div><p class=\"ds-spec-v\">A site designed around how your customers decide, built fast and handed over running.</p></div>",
+      "css": ".ds-spec { display: grid; grid-template-columns: 1fr 1.35fr; gap: 32px; padding: 36px 0 40px; border-top: 1px solid var(--line, #333); font-family: var(--font-sans, 'Geist Variable', system-ui, sans-serif); } .ds-spec-k { font-size: 2rem; font-weight: 600; letter-spacing: -.035em; line-height: 1.05; color: var(--ink, #fafafa); } .ds-spec-v { margin: 0; font-size: 1.2rem; line-height: 1.55; color: var(--dim, #a6a6a6); max-width: 34em; }"
+    },
+    {
+      "name": "Live Indicator",
+      "kind": "chip",
+      "refersTo": "button-live",
+      "description": "7px crimson dot with a pinging ring; marks a project as live.",
+      "html": "<span class=\"ds-live\"><span class=\"ds-live-dot\"></span>Live</span>",
+      "css": ".ds-live { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono, 'Geist Mono Variable', ui-monospace, monospace); font-size: .8125rem; color: var(--dim, #a6a6a6); } .ds-live-dot { position: relative; width: 7px; height: 7px; border-radius: 50%; background: var(--live, #e60039); } .ds-live-dot::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--live, #e60039); animation: ds-ping 2.4s cubic-bezier(0.16,1,0.3,1) infinite; } @keyframes ds-ping { 0% { transform: scale(.4); opacity: .9; } 70%, 100% { transform: scale(1.6); opacity: 0; } } @media (prefers-reduced-motion: reduce) { .ds-live-dot::after { animation: none; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Launch Keynote",
+    "overview": "Every client site is launched like a product at a keynote: alone on a dark stage, under one light, revealed in builds. The house is a charcoal stage: a solid floor and a slightly lifted air, lit by warm white spot cones falling from top center. There are no cards, no grids of thumbnails, no skill bars. Each section is a keynote ritual (the opening slide, the statement slide, the product reveal, the spec sheet, the presenter, \"one more thing\"), and each carries one statement at slide scale.\n\nThe palette is owner-pinned (21st.dev \"Slate Dark\") and nearly achromatic. The only chroma on the stage is crimson, and it means one of two things: this is live, or press this. Density is low; one idea per viewport, generous vertical air measured in viewport heights, and hairline rules instead of containers. Motion is damped and theatrical: lights come up, words build in from below a mask, the machine rises and turns. Nothing snaps.\n\nThe 3D stage (a single MacBook under a spot, lid scrubbed by scroll, the project scrolling itself on screen) is the signature and sits fixed behind the content. After the machine leaves, everything else sits on the solid stage floor, and later scenes reuse the same light as painted spot cones.",
+    "keyCharacteristics": [
+      "Charcoal stage, one warm white spot, film grain over the whole house.",
+      "Crimson reserved for live state and primary action.",
+      "Slide-scale Geist, tight negative tracking, built word by word.",
+      "Geist Mono only for spec data.",
+      "Hairline rules and 4px corners; no cards.",
+      "Damped motion throughout (Lenis inertia, expo-out builds)."
+    ],
+    "rules": [
+      { "name": "The One Light Rule", "body": "Crimson means \"live\" or \"act\" and nothing else. It is never decoration, never a heading color, never a background panel. If a crimson element is neither a live indicator nor an action (or that action's hover/focus feedback), it is wrong.", "section": "colors" },
+      { "name": "The Charcoal Ramp Rule", "body": "Depth on the page comes from the neutral ramp (floor, air, surface, line), not from new hues. No blue-grays, no warm browns.", "section": "colors" },
+      { "name": "The Spec Data Rule", "body": "Geist Mono is for data only: counts, indices, categories, places, domains. Never for headings, prose, or decorative labels above headings.", "section": "typography" },
+      { "name": "The Slide Scale Rule", "body": "Headings are 600 weight with -0.04em tracking and sub-1 line height, balanced with `text-wrap: balance`. One heading statement per viewport.", "section": "typography" },
+      { "name": "The One Spot Rule", "body": "Light falls from above, center, warm white. A scene gets one spot, never a wash or a colored gradient background.", "section": "elevation" },
+      { "name": "The Frosted Bar Rule", "body": "The only translucent surface is the top bar once scrolled: floor color at 72% with a 14px blur and a hairline under it.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep crimson (#e60039) for live indicators and actions, including their hover and focus feedback.",
+      "Do separate content with 1px hairline rules in #333333 instead of boxing it.",
+      "Do set headings in Geist at 600 with -0.04em tracking and let one statement own the viewport.",
+      "Do put counts, indices, categories, places and domains in Geist Mono at 0.8125rem with tabular numerals.",
+      "Do light a scene with a single warm white spot from top center (3D or painted radial gradient).",
+      "Do build text in with masked word rises and damped easing; respect reduced motion.",
+      "Do use 4px corners on every interactive element."
+    ],
+    "donts": [
+      "Don't use cards, thumbnail grids, or skill bars.",
+      "Don't use crimson as a decorative accent, heading color, or background panel.",
+      "Don't use Poppins or Playfair; the theme's bundled faces were deliberately set aside for Geist.",
+      "Don't put Geist Mono on headings, prose, or labels stacked above headings.",
+      "Don't add interface hues outside the pinned Slate Dark palette (the MacBook's aluminium and glass are material, not interface color).",
+      "Don't snap: no instant jumps, no linear easing on reveals."
+    ]
+  },
+  "knownGaps": [
+    "Hero floor-pool edge is not visible in the first viewport.",
+    "Closed lid blows out under the spot during turns.",
+    "Lid mark reads flat.",
+    "About portrait is a framed rectangular photo pending a real alpha cut-out asset."
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "seedKey": "59b5d78a",
+  "title": "Escolha o mundo visual do portfolio",
+  "question": "O sorteio escolheu o Conjunto de Pranchas (CAD + redline). Mantenha, pegue uma alternativa ou sorteie de novo.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Conjunto de Pranchas",
+      "kicker": "THE ROLL",
+      "lineage": "Pranchas de obra em CAD: model space escuro, linework branco, redlines em vermelho",
+      "thesis": "Cada site é uma obra entregue: desenhada em linha, construída e no ar.",
+      "palette": ["#1a1a1a", "#141414", "#fafafa", "#a6a6a6", "#e60039", "#66001a"],
+      "materials": ["model space escuro com grid", "linework e cotas", "redline à mão em carmim", "carimbo (title block)"],
+      "viewport": "Frase monumental em 3 tempos — 'Eu desenho. Eu construo. Vai pro ar.' — com cotas, cursor-mira com coordenadas, e o carimbo da prancha A-00 com foto, idioma e o botão WhatsApp em carmim.",
+      "risk": "Se o CAD virar fantasia (grid decorativo), vira clichê de 'blueprint'; precisa funcionar como sistema: índice de pranchas, carimbos, cotas.",
+      "raised": [
+        { "from": "challenger-jacquard", "raise": "Todo projeto é rastreável da linha ao build: o MacBook nasce em wireframe e ganha matéria enquanto a tampa abre." },
+        { "from": "challenger-instruments", "raise": "Todo movimento é amortecido e físico — scroll com inércia, molas, nada dá snap." },
+        { "from": "challenger-wayfinding", "raise": "Números de prancha monumentais (A-01…A-10) são a navegação; uma mensagem por faixa." },
+        { "from": "challenger-bazaar", "raise": "Cada projeto carrega seu carimbo de origem (cidade, ramo, idioma) que viaja com ele até o índice." },
+        { "from": "challenger-riso", "raise": "O redline é uma camada física separada, como papel manteiga, que desliza sobre o desenho no hover." }
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Palco de Keynote",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "Eventos de lançamento de produto: palco escuro, um produto por vez sob o holofote",
+      "thesis": "Cada projeto é lançado como um produto, sozinho no palco.",
+      "palette": ["#141414", "#1f1f1f", "#fafafa", "#e60039"],
+      "materials": ["palco escuro", "holofote volumétrico", "tipografia de slide gigante"],
+      "viewport": "Uma frase de abertura em escala de telão; o primeiro MacBook sobe do escuro sob a luz e abre.",
+      "risk": "É onde a maioria dos portfolios de dev com MacBook 3D chega — familiar e eficaz, mas pouco memorável."
+    },
+    {
+      "id": "challenger-gateboard",
+      "label": "Painel de Embarque",
+      "verdict": "competitive",
+      "lineage": "Cartão de embarque segmentado + painel de portões ao vivo",
+      "thesis": "Os projetos como um painel de voos: todos no ar, status LIVE, destino = domínio.",
+      "palette": ["#141414", "#fafafa", "#a6a6a6", "#e60039"],
+      "materials": ["painel com colunas fixas", "dígitos tabulares", "bloco escaneável"],
+      "viewport": "Frase forte no topo; abaixo, o painel de partidas lista os 10 sites com cidade e status LIVE; o contato é um cartão de embarque.",
+      "case": "Funde bem: sites viram voos no ar; perde em identificação — o dono de pintora não se reconhece num aeroporto.",
+      "risk": "Pode parecer gimmick se o painel não for estrito."
+    },
+    {
+      "id": "challenger-jacquard",
+      "label": "Brocado Jacquard",
+      "verdict": "declined",
+      "lineage": "Tear jacquard e cartões perfurados",
+      "thesis": "Instruções binárias viram padrão tecido.",
+      "palette": ["#141433", "#d4a93c", "#efe6cf"],
+      "materials": ["seda", "fio de ouro", "cartão perfurado"],
+      "viewport": "Um motivo tecido linha a linha a partir do código.",
+      "case": "Funde mal: nem clientes nem agências se identificam com tear; e quebra a paleta fixada.",
+      "risk": "Metáfora distante do produto.",
+      "kept": "Rastreabilidade do acabado até a instrução."
+    },
+    {
+      "id": "challenger-instruments",
+      "label": "Painel de Voo Noturno",
+      "verdict": "declined",
+      "lineage": "Os seis instrumentos de cabine",
+      "thesis": "Seis mostradores calmos sustentam a confiança.",
+      "palette": ["#0b0b0b", "#f2f2f2", "#6cff8a", "#ffb000"],
+      "materials": ["painel preto fosco", "ponteiros luminosos"],
+      "viewport": "Seis mostradores em duas fileiras.",
+      "case": "Funde mal: não há dados vivos para medir; identificação baixa.",
+      "risk": "Vira dashboard sem dados.",
+      "kept": "Movimento amortecido e físico, nunca snap."
+    },
+    {
+      "id": "challenger-wayfinding",
+      "label": "Sinalização de Aeroporto",
+      "verdict": "declined",
+      "lineage": "Faixas amarelas de wayfinding",
+      "thesis": "Uma decisão por faixa, portões monumentais.",
+      "palette": ["#ffd200", "#111111", "#ffffff"],
+      "materials": ["faixas suspensas", "pictogramas"],
+      "viewport": "Uma faixa amarela aponta para os projetos.",
+      "case": "Funde mal: o amarelo dominante contradiz a paleta Slate Dark fixada.",
+      "risk": "Briga com a paleta.",
+      "kept": "Números monumentais como navegação."
+    },
+    {
+      "id": "challenger-bazaar",
+      "label": "Bazar de Sombras",
+      "verdict": "declined",
+      "lineage": "Mercado surreal de sombras",
+      "thesis": "Sombras trocadas com etiqueta de origem.",
+      "palette": ["#0e1424", "#c9a24a", "#e8ecf2"],
+      "materials": ["lona", "etiquetas", "luar"],
+      "viewport": "Uma rua de barracas ao luar.",
+      "case": "Funde mal: surreal demais para quem quer um orçamento.",
+      "risk": "Esconde a oferta.",
+      "kept": "Cada item carrega sua etiqueta de origem."
+    },
+    {
+      "id": "challenger-riso",
+      "label": "Risografia",
+      "verdict": "declined",
+      "lineage": "Impressão riso com registro desalinhado",
+      "thesis": "Tintas spot sobre papel quente.",
+      "palette": ["#f3ecdf", "#ff48b0", "#0078bf", "#ffe800"],
+      "materials": ["papel", "grão", "halftone"],
+      "viewport": "Formas recortadas fora de registro.",
+      "case": "Funde mal: fundo claro e quente contradiz a paleta escura fixada.",
+      "risk": "Quebra a paleta.",
+      "kept": "Hover como camada física que desliza."
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "canon": true,
+  "canonCard": {
+    "label": "O padrão da categoria",
+    "thesis": "Portfolio de dev escuro, executado com perfeição.",
+    "palette": ["#1a1a1a", "#fafafa", "#e60039"],
+    "materials": ["grid limpo", "cards de projeto", "tipografia sans"],
+    "viewport": "Nome e cargo grandes, CTA, e uma galeria de projetos logo abaixo.",
+    "risk": "Indistinguível dos outros portfolios por definição."
+  },
+  "steer": true
+}
