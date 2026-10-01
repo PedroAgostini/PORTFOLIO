@@ -368,13 +368,41 @@
 .work-intro-line {
   display: block;
 }
-/* The rolling count sits on the headline's baseline, in the headline's weight. */
-.intro-count number-flow-react {
-  font-weight: inherit;
-  font-feature-settings: inherit;
-  line-height: inherit;
-  --number-flow-mask-height: 0.08em;
-  vertical-align: baseline;
+/* Odometer count (src/components/ui/number-flow.jsx): plain text, so it shares the
+   headline's font, weight and baseline everywhere. */
+.odo {
+  font-variant-numeric: tabular-nums;
+}
+.odo-digit {
+  position: relative;
+  display: inline-block;
+  /* clip, not overflow: overflow would move the inline-block's baseline */
+  clip-path: inset(0 -0.15em);
+}
+.odo-ghost {
+  visibility: hidden;
+}
+.odo-col {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transform: translateY(0);
+}
+.odo-col > span {
+  display: block;
+}
+.odo.is-on .odo-col {
+  transform: translateY(calc(-100% * var(--steps) / var(--rows)));
+  transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .odo.is-on .odo-col {
+    transition: none;
+  }
 }
 @media (min-width: 900px) {
   .work-intro-line {
@@ -2661,8 +2689,9 @@
     text-align: left;
     padding-block: 88px 8px;
   }
+  /* No pull-up on phones: the intro wraps to four lines and the MacBook would cover it. */
   .work-intro + .work-track {
-    margin-top: -18svh;
+    margin-top: 0;
   }
   /* The SVG carries side margins in its viewBox: let it use the full screen width. */
   .work .wm {
