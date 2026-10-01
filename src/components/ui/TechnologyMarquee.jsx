@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef } from 'react'
-import { useReducedMotion } from '../../lib/useReducedMotion'
+import { usePrefersReducedMotion } from '../../lib/useReducedMotion'
 
 const AUTO_LAP_SECONDS = 42
 const RESUME_DELAY_MS = 900
@@ -73,7 +73,7 @@ export function TechnologyMarquee({ label, hint, technologies, showLabel = true 
   const root = useRef(null)
   const viewport = useRef(null)
   const track = useRef(null)
-  const reduced = useReducedMotion()
+  const reduced = usePrefersReducedMotion()
   const instructionsId = useId()
 
   useEffect(() => {
