@@ -1,24 +1,99 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Pedro de Agostini — Web Developer</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' ws: wss:; frame-src https:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests"
+    />
+    <title>__SITE_TITLE__</title>
     <meta
       name="description"
-      content="Pedro de Agostini, mid-level web developer creating websites, web systems and e-commerce experiences for companies in Brazil and the United States."
+      content="__SITE_DESCRIPTION__"
     />
+    <meta name="author" content="Pedro de Agostini" />
+    <meta name="creator" content="Pedro de Agostini" />
+    <meta name="robots" content="__ROBOTS_CONTENT__" />
+    <link rel="canonical" href="__SITE_URL__" />
+    <link rel="alternate" type="text/markdown" href="__SITE_URL__index.md" />
+    <link rel="describedby" href="__SITE_URL__llms.txt" />
+
     <meta name="theme-color" content="#141414" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Pedro de Agostini — Web Developer" />
-    <meta
-      property="og:description"
-      content="Websites, web systems and e-commerce experiences created by Pedro de Agostini for companies in Brazil and the United States."
-    />
-    <meta property="og:image" content="./img/pedro.png" />
+    <meta property="og:site_name" content="__SITE_NAME__" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="pt_BR" />
+    <meta property="og:title" content="__SITE_TITLE__" />
+    <meta property="og:description" content="__SITE_DESCRIPTION__" />
+    <meta property="og:url" content="__SITE_URL__" />
+    <meta property="og:image" content="__SOCIAL_IMAGE_URL__" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="Pedro de Agostini — Web Developer Portfolio" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="__SITE_TITLE__" />
+    <meta name="twitter:description" content="__SITE_DESCRIPTION__" />
+    <meta name="twitter:image" content="__SOCIAL_IMAGE_URL__" />
+    <meta name="twitter:image:alt" content="Pedro de Agostini — Web Developer Portfolio" />
+
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="./favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "__SITE_URL__#person",
+            "name": "Pedro de Agostini",
+            "url": "__SITE_URL__",
+            "image": "__SOCIAL_IMAGE_URL__",
+            "jobTitle": "Web Developer",
+            "email": "mailto:contatopedrodeagostini@gmail.com",
+            "sameAs": [
+              "https://www.linkedin.com/in/pedrodeagostini",
+              "https://github.com/PedroAgostini"
+            ],
+            "knowsAbout": [
+              "Web development",
+              "Corporate websites",
+              "Web systems",
+              "E-commerce",
+              "User experience",
+              "React"
+            ],
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Agência TS"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "__SITE_URL__#website",
+            "url": "__SITE_URL__",
+            "name": "__SITE_NAME__",
+            "description": "__SITE_DESCRIPTION__",
+            "inLanguage": ["en", "pt-BR"],
+            "publisher": { "@id": "__SITE_URL__#person" }
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "__SITE_URL__#profile",
+            "url": "__SITE_URL__",
+            "name": "__SITE_TITLE__",
+            "description": "__SITE_DESCRIPTION__",
+            "isPartOf": { "@id": "__SITE_URL__#website" },
+            "mainEntity": { "@id": "__SITE_URL__#person" }
+          }
+        ]
+      }
+    </script>
     <style>
       html,
       body {

@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "check": "npm run build && node scripts/verify-production.mjs",
+    "generate:social": "node scripts/generate-social-image.mjs",
     "preview": "vite preview",
     "prepare:captures": "node scripts/prepare-captures.mjs"
   },

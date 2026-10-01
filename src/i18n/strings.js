@@ -11,9 +11,9 @@ export const whatsappLink = (text) =>
 export const strings = {
   en: {
     meta: {
-      title: 'Pedro de Agostini — Web Developer',
+      title: 'Pedro de Agostini | Web Developer Portfolio',
       description:
-        'Pedro de Agostini, mid-level web developer specializing in websites, web systems and e-commerce for companies in Brazil and the United States.',
+        "Explore Pedro de Agostini's portfolio: corporate websites, e-commerce experiences and web systems built for companies in Brazil and the United States.",
     },
     skip: 'Skip to content',
     nav: { work: 'Work', career: 'Career', about: 'About', contact: 'Contact', talk: "Let's talk", langLabel: 'Language', menu: 'Open menu', closeMenu: 'Close menu', elsewhere: 'Social media' },
@@ -134,9 +134,9 @@ export const strings = {
 
   pt: {
     meta: {
-      title: 'Pedro de Agostini — Desenvolvedor Web',
+      title: 'Pedro de Agostini | Desenvolvedor Web',
       description:
-        'Pedro de Agostini, desenvolvedor web pleno e especialista em websites, sistemas web e e-commerce para empresas no Brasil e nos Estados Unidos.',
+        'Portfólio de Pedro de Agostini, desenvolvedor web pleno especializado em sites institucionais, e-commerce e sistemas web para empresas no Brasil e nos EUA.',
     },
     skip: 'Pular para o conteúdo',
     nav: { work: 'Projetos', career: 'Trajetória', about: 'Sobre', contact: 'Contato', talk: 'Vamos conversar', langLabel: 'Idioma', menu: 'Abrir menu', closeMenu: 'Fechar menu', elsewhere: 'Redes sociais' },

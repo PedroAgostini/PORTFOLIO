@@ -15,14 +15,23 @@ npm run preview    # serve o dist/ localmente
 
 ## Publicar
 
-- **Vercel:** importe o repositório. O preset do Vite já funciona sem configuração.
-- **GitHub Pages:** rode `npm run build` e publique a pasta `dist/`. O `base: './'` no `vite.config.js` permite servir o site num subcaminho (`/PORTFOLIO/`).
+- **GitHub Pages:** o workflow `.github/workflows/deploy-pages.yml` faz build, valida e publica a cada push em `main`. No GitHub, selecione **Settings → Pages → Source: GitHub Actions** uma única vez.
+- **Vercel:** importe o repositório. `vercel.json` configura build, cache e headers de segurança.
+- **Netlify:** importe o repositório. `netlify.toml` e `public/_headers` configuram build e headers de segurança.
 
-## Formulário de contato (ação necessária)
+A URL canônica de produção é `https://pedroagostini.vercel.app/`. Em outro domínio, defina a variável de ambiente `SITE_URL` com a URL pública completa e barra final.
 
-O formulário envia via [FormSubmit](https://formsubmit.co) para `contatopedrodeagostini@gmail.com`, sem backend.
-**No primeiro envio, o FormSubmit manda um e-mail de ativação para esse endereço. Clique no link uma única vez**; a partir daí as mensagens chegam normalmente.
-O endpoint fica em `src/components/Contact.jsx` (`FORM_ENDPOINT`).
+Antes de publicar manualmente, rode:
+
+```bash
+npm run check
+```
+
+O comando gera o build e valida canonical, Open Graph, JSON-LD, robots, sitemap, `llms.txt`, `llms-full.txt`, `index.md` e os artefatos essenciais de produção.
+
+## Contato
+
+Os CTAs abrem uma conversa no WhatsApp e o rodapé também oferece e-mail, LinkedIn e GitHub. O projeto é totalmente estático e não depende de backend nem armazena dados de visitantes.
 
 ## Onde mexer
 

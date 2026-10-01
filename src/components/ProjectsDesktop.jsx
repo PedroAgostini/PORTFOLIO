@@ -137,7 +137,8 @@ function BrowserWindow({ project, origin, onClose }) {
           title={project.name}
           src={project.url}
           loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
+          sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+          referrerPolicy="strict-origin-when-cross-origin"
           onLoad={() => setLoaded(true)}
           style={{ width: frame.base, height: frame.h, transform: `scale(${frame.s})` }}
         />

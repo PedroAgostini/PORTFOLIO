@@ -4,6 +4,10 @@ import { strings } from './strings'
 const LanguageContext = createContext(null)
 const STORAGE_KEY = 'pda-lang'
 
+function setMetaContent(selector, content) {
+  document.querySelector(selector)?.setAttribute('content', content)
+}
+
 function initialLang() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY)
@@ -21,7 +25,12 @@ export function LanguageProvider({ children }) {
     const t = strings[lang]
     document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en'
     document.title = t.meta.title
-    document.querySelector('meta[name="description"]')?.setAttribute('content', t.meta.description)
+    setMetaContent('meta[name="description"]', t.meta.description)
+    setMetaContent('meta[property="og:title"]', t.meta.title)
+    setMetaContent('meta[property="og:description"]', t.meta.description)
+    setMetaContent('meta[property="og:locale"]', lang === 'pt' ? 'pt_BR' : 'en_US')
+    setMetaContent('meta[name="twitter:title"]', t.meta.title)
+    setMetaContent('meta[name="twitter:description"]', t.meta.description)
     try {
       localStorage.setItem(STORAGE_KEY, lang)
     } catch {

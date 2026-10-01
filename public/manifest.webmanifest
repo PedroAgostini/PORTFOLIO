@@ -1,0 +1,24 @@
+{
+  "name": "Pedro de Agostini — Web Developer Portfolio",
+  "short_name": "DevAgostini",
+  "description": "Portfolio of Pedro de Agostini, web developer specializing in websites, web systems and e-commerce.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#141414",
+  "theme_color": "#141414",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "./favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "./apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
+
