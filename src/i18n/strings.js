@@ -31,8 +31,8 @@ export const strings = {
       localTime: 'Local time',
     },
     work: {
-      intro: 'More Than 50 Projects Built. Explore Ten of Them.',
-      introLines: ['More Than {count} Projects Built.', 'Explore Ten of Them.'],
+      intro: 'More Than 50 Projects Built. Explore Some of Them.',
+      introLines: ['More Than {count} Projects Built.', 'Explore Some of Them.'],
       projectCount: 50,
       introSub: 'Live websites, from planning through deployment.',
       visit: 'Visit site',
@@ -154,8 +154,8 @@ export const strings = {
       localTime: 'Horário local',
     },
     work: {
-      intro: 'Mais de 50 projetos construídos. Conheça dez deles.',
-      introLines: ['Mais de {count} projetos construídos.', 'Conheça dez deles.'],
+      intro: 'Mais de 50 projetos construídos. Conheça alguns deles.',
+      introLines: ['Mais de {count} projetos construídos.', 'Conheça alguns deles.'],
       projectCount: 50,
       introSub: 'Websites no ar, do planejamento ao deploy.',
       visit: 'Ver site',
