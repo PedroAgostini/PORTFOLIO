@@ -99,8 +99,8 @@ const setReadingPace = (e) => {
   const img = e.currentTarget
   const screens = (img.naturalHeight / img.naturalWidth) * SCREEN_ASPECT
   const travel = Math.max(1, screens - 1) * SECONDS_PER_SCREEN
-  // The keyframes spend 80% of each leg moving (10% rest at each end).
-  img.style.setProperty('--scroll-dur', `${Math.max(20, travel / 0.8).toFixed(1)}s`)
+  // The keyframes spend 95.5% moving: a near-instant start and a short rest at the foot.
+  img.style.setProperty('--scroll-dur', `${Math.max(20, travel / 0.955).toFixed(1)}s`)
 }
 
 /** The MacBook Pro (SVG) with the live site's capture scrolling by itself on its screen. */
