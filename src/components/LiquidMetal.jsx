@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useReducedMotion } from '../lib/useReducedMotion'
+import { usePrefersReducedMotion } from '../lib/useReducedMotion'
 
 // Chrome with a faint warm cast (colour-burn tint), so the metal belongs to the crimson palette.
 const BASE_UNIFORMS = {
@@ -28,16 +28,16 @@ const REST = 0.6
 const HOVER = 1
 const BURST = 2.4
 
+let animatedRimSupport
 const supportsAnimatedRim = () => {
-  const connection = navigator.connection
-  const memory = navigator.deviceMemory ?? 8
-  const cores = navigator.hardwareConcurrency ?? 8
-  return (
-    !window.matchMedia('(pointer: coarse)').matches &&
-    !connection?.saveData &&
-    memory > 4 &&
-    cores > 4
-  )
+  if (animatedRimSupport !== undefined) return animatedRimSupport
+  try {
+    const canvas = document.createElement('canvas')
+    animatedRimSupport = !!(canvas.getContext('webgl2') || canvas.getContext('webgl'))
+  } catch {
+    animatedRimSupport = false
+  }
+  return animatedRimSupport
 }
 
 /**
@@ -58,12 +58,28 @@ export function LiquidMetal({ as: Tag = 'a', size = 'md', tone = 'ember', classN
   const rootRef = useRef(null)
   const mount = useRef(null)
   const hovered = useRef(false)
-  const reduced = useReducedMotion()
+  const reduced = usePrefersReducedMotion()
   const [fallback, setFallback] = useState(true)
   const [shaderRequested, setShaderRequested] = useState(false)
   const [pressed, setPressed] = useState(false)
   const [ripples, setRipples] = useState([])
   const rippleId = useRef(0)
+
+  useEffect(() => {
+    const element = rootRef.current
+    if (!element || reduced || !supportsAnimatedRim()) return undefined
+
+    // Start the liquid rim as soon as the button approaches the viewport on
+    // every device. Its own observer pauses the shader again while off-screen.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setShaderRequested(true)
+      },
+      { rootMargin: '80px 0px' },
+    )
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [reduced])
 
   useEffect(() => {
     if (!shaderRequested || reduced || !supportsAnimatedRim()) {
@@ -144,7 +160,10 @@ export function LiquidMetal({ as: Tag = 'a', size = 'md', tone = 'ember', classN
         setPressed(false)
         setSpeed(REST)
       }}
-      onPointerDown={() => setPressed(true)}
+      onPointerDown={() => {
+        setPressed(true)
+        if (!reduced && supportsAnimatedRim()) setShaderRequested(true)
+      }}
       onPointerUp={() => setPressed(false)}
       onFocus={() => {
         hovered.current = true

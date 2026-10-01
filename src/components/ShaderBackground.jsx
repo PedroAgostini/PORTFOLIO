@@ -281,8 +281,7 @@ export function ShaderBackground({ className = '', reduced = false }) {
 
   useEffect(() => {
     const canvas = canvasRef.current
-    const connection = navigator.connection
-    if (reduced || connection?.saveData) return undefined
+    if (reduced) return undefined
 
     const mobile = window.matchMedia('(pointer: coarse), (max-width: 768px)').matches
     const memory = navigator.deviceMemory ?? 8
@@ -339,10 +338,10 @@ export function ShaderBackground({ className = '', reduced = false }) {
         : 1
     const targetFps = mobile
       ? veryLowPower
-        ? 6
+        ? 8
         : constrained
-          ? 9
-          : 12
+          ? 12
+          : 15
       : constrained
         ? 18
         : 24

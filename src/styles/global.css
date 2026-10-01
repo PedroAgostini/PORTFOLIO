@@ -455,9 +455,16 @@ p {
   width: 17px;
   height: 17px;
 }
-/* No WebGL: a brushed-chrome rim drawn in CSS. */
+/* No WebGL (and the instant state before it mounts): a lightweight moving
+   chrome rim. Touch gets visible motion without needing hover. */
 .lm--fallback .lm-rim {
-  background: conic-gradient(from 45deg, #f2f2f2, #6b6b6b, #ffffff, #8a8a8a, #e6e6e6, #5c5c5c, #f2f2f2);
+  background: linear-gradient(110deg, #5c5c5c 0%, #f2f2f2 18%, #777 34%, #fff 50%, #8a8a8a 66%, #e6e6e6 84%, #5c5c5c 100%);
+  background-size: 260% 100%;
+  animation: lm-fallback-flow 3.2s linear infinite;
+}
+@keyframes lm-fallback-flow {
+  from { background-position: 160% 0; }
+  to { background-position: -100% 0; }
 }
 .lm:focus-visible {
   outline: 2px solid var(--live);
@@ -517,7 +524,8 @@ p {
 
 @media (prefers-reduced-motion: reduce) {
   .grain,
-  .live-dot::after {
+  .live-dot::after,
+  .lm--fallback .lm-rim {
     animation: none;
   }
   *,
