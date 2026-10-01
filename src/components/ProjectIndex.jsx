@@ -58,7 +58,7 @@ export function ProjectIndex() {
         <span>{t.index.cols.name}</span>
         <span>{t.index.cols.company}</span>
         <span>{t.index.cols.category}</span>
-        <span>{t.index.cols.domain}</span>
+        <span />
       </div>
 
       <ul className="index-list" onPointerLeave={() => setHover(-1)}>
@@ -88,9 +88,9 @@ export function ProjectIndex() {
                 />
               </span>
               <span className="index-cat">{p.category[lang]}</span>
-              <span className="index-domain mono">
+              <span className="index-domain">
                 <span className="live-dot" aria-hidden="true" />
-                <span className="index-domain-text">{p.label}</span>
+                <span className="index-domain-text">{t.work.visit}</span>
                 <ArrowUpRight className="index-arrow" />
               </span>
             </a>

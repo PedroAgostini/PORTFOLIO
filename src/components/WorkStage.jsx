@@ -47,7 +47,6 @@ function ProjectCaption({ project }) {
           {t.work.visit}
           <ArrowUpRight />
         </LiquidMetal>
-        <span className="mono cap-domain">{project.label}</span>
       </Line>
     </motion.div>
   )
@@ -91,6 +90,18 @@ function ProgressRail({ active, trackRef }) {
   )
 }
 
+// Screen is 501.22 × 323.85 in the SVG. A constant reading pace: every screenful of the
+// page takes the same time, so long sites scroll as gently as short ones.
+const SCREEN_ASPECT = 501.22 / 323.85
+const SECONDS_PER_SCREEN = 6
+const setReadingPace = (e) => {
+  const img = e.currentTarget
+  const screens = (img.naturalHeight / img.naturalWidth) * SCREEN_ASPECT
+  const travel = Math.max(1, screens - 1) * SECONDS_PER_SCREEN
+  // The keyframes spend 80% of each leg moving (10% rest at each end).
+  img.style.setProperty('--scroll-dur', `${Math.max(20, travel / 0.8).toFixed(1)}s`)
+}
+
 /** The MacBook Pro (SVG) with the live site's capture scrolling by itself on its screen. */
 function Laptop({ project }) {
   const reduced = useReducedMotion()
@@ -109,6 +120,7 @@ function Laptop({ project }) {
           >
             <img
               className={`wm-shot${reduced ? '' : ' is-playing'}`}
+              onLoad={setReadingPace}
               src={project.image}
               srcSet={`${project.image.replace('.webp', '-sm.webp')} 640w, ${project.image} 1024w`}
               sizes="(max-width: 899px) 90vw, 45vw"

@@ -2157,8 +2157,9 @@
   will-change: transform;
 }
 /* The site scrolls itself: rest at the top, glide down, rest at the foot, glide back. */
+/* Duration is set per site from its length (WorkStage setReadingPace): a steady reading pace. */
 .wm-shot.is-playing {
-  animation: wm-scroll 24s cubic-bezier(0.45, 0, 0.55, 1) 0.8s infinite alternate;
+  animation: wm-scroll var(--scroll-dur, 40s) cubic-bezier(0.37, 0, 0.63, 1) 1.2s infinite alternate;
 }
 @keyframes wm-scroll {
   0%,
@@ -2716,6 +2717,11 @@
   }
   .edu-extra .edu-github {
     justify-self: center;
+  }
+  /* The list's "Ver site" stays visible on phones (it replaced the long addresses). */
+  .index-domain .index-domain-text {
+    display: inline;
+    font-size: 0.9rem;
   }
   /* Visible gap between the description and "Ver site": 16px margin + 12px clip padding. */
   .work .cap-mask.cap-cta {

@@ -1,4 +1,4 @@
 {
-  "prompt": "ORIGIN: full-page screenshot of the live project site (king-of-floors) captured 2026-09-30 at 1280px viewport via Chrome DevTools (materiais/capturas/king-of-floors.jpeg), resized by scripts/prepare-captures.mjs into a first-viewport 16:10 thumbnail. Not generated.",
-  "createdAt": "2026-09-30T14:30:53.855Z"
+  "prompt": "ORIGIN: full-page screenshot of the live project site (king-of-floors), 1920px viewport, supplied by the owner (materiais/capturas/site); prime-depot stitched with its three pinned-animation frames. Resized by scripts/prepare-captures.mjs. Not generated.",
+  "createdAt": "2026-10-01T12:00:09.410Z"
 }
