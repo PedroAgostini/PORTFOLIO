@@ -31,9 +31,9 @@ export const strings = {
       localTime: 'Local time',
     },
     work: {
-      intro: 'More Than 50 Projects Built. Explore Some of Them.',
+      intro: 'More Than 60 Projects Built. Explore Some of Them.',
       introLines: ['More Than {count} Projects Built.', 'Explore Some of Them.'],
-      projectCount: 50,
+      projectCount: 60,
       introSub: 'Live websites, from planning through deployment.',
       visit: 'Visit site',
       live: 'Live',
