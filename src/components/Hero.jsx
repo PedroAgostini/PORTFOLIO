@@ -78,6 +78,7 @@ export function Hero({ staged }) {
         .from('.hero-rule', { scaleX: 0, duration: 1.4, transformOrigin: 'left' }, 0.1)
         .from('.hero-top > .hero-col', { autoAlpha: 0, y: 12, duration: 1, stagger: 0.08 }, 0.35)
         .from('.hero-title .w > span', { yPercent: 108, duration: 1.3, stagger: 0.06 }, 0.5)
+        .from('.hero-sub--mobile', { autoAlpha: 0, y: 14, duration: 1 }, '-=0.9')
         .from('.hero-actions > *', { autoAlpha: 0, y: 14, duration: 0.9, stagger: 0.08 }, '-=0.8')
         .from('.hero-hud > .hud-cell', { autoAlpha: 0, duration: 1, stagger: 0.08 }, '-=0.6')
     },
@@ -120,6 +121,8 @@ export function Hero({ staged }) {
             </span>
           ))}
         </h1>
+        {/* Phones read top to bottom: the headline first, then this line (the column copy is hidden there). */}
+        <p className="hero-sub hero-sub--mobile">{h.sub}</p>
         <div className="hero-actions">
           <Magnetic>
             <LiquidMetal href={whatsappLink(h.whatsappText)} target="_blank" rel="noopener noreferrer">

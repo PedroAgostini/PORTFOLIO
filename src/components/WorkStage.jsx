@@ -189,7 +189,7 @@ export function Work() {
         </h2>
       </div>
 
-      <div className="work-track" ref={track} style={{ height: `${projects.length * 90 + 40}vh` }}>
+      <div className="work-track" ref={track} style={{ '--n': projects.length }}>
         <div className="work-sticky section" ref={sticky}>
           <div className="work-layout">
             <div className="work-left">

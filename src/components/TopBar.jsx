@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
-import { motion } from 'motion/react'
+import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useLang } from '../i18n/LanguageContext'
-import { whatsappLink } from '../i18n/strings'
+import { EMAIL, GITHUB, LINKEDIN, whatsappLink } from '../i18n/strings'
 import { useLenis, useScrollTo } from '../lib/SmoothScroll'
-import { WhatsApp } from './Icons'
+import { ArrowUpRight, GitHub, LinkedIn, Mail, WhatsApp } from './Icons'
 import { LiquidMetal } from './LiquidMetal'
 
 const spring = { type: 'spring', stiffness: 420, damping: 34 }
@@ -55,6 +55,110 @@ function useActiveSection(ids) {
 }
 
 const SECTIONS = ['work', 'about', 'contact']
+const ease = [0.16, 1, 0.3, 1]
+
+/**
+ * Phones: the nav pill does not fit, so a full-screen sheet carries the sections,
+ * the socials and the primary action, all within thumb reach at the bottom half.
+ */
+function MobileMenu({ open, onClose, active, labels, onGo }) {
+  const { t } = useLang()
+  const lenis = useLenis()
+  const sheet = useRef(null)
+
+  useEffect(() => {
+    if (!open) return
+    lenis?.stop()
+    document.documentElement.style.overflow = 'hidden'
+    // Focus the dialog itself: screen readers land in it, and touch gets no stray focus ring.
+    sheet.current?.focus({ preventScroll: true })
+    const onKey = (e) => {
+      if (e.key === 'Escape') onClose()
+      // Keep keyboard focus inside the sheet while it is open.
+      if (e.key === 'Tab' && sheet.current) {
+        const f = [...sheet.current.querySelectorAll('a, button')]
+        const i = f.indexOf(document.activeElement)
+        if (e.shiftKey && i <= 0) {
+          e.preventDefault()
+          f[f.length - 1].focus()
+        } else if (!e.shiftKey && i === f.length - 1) {
+          e.preventDefault()
+          f[0].focus()
+        }
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.documentElement.style.overflow = ''
+      lenis?.start()
+    }
+  }, [open, lenis, onClose])
+
+  const socials = [
+    { href: LINKEDIN, label: 'LinkedIn', icon: <LinkedIn />, ext: true },
+    { href: GITHUB, label: 'GitHub', icon: <GitHub />, ext: true },
+    { href: `mailto:${EMAIL}`, label: 'E-mail', icon: <Mail /> },
+  ]
+
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          id="mobile-menu"
+          ref={sheet}
+          className="msheet"
+          role="dialog"
+          aria-modal="true"
+          aria-label={t.nav.menu}
+          tabIndex={-1}
+          initial={{ opacity: 0, clipPath: 'inset(0 0 100% 0 round 0 0 28px 28px)' }}
+          animate={{ opacity: 1, clipPath: 'inset(0 0 0% 0 round 0 0 0px 0px)' }}
+          exit={{ opacity: 0, clipPath: 'inset(0 0 100% 0 round 0 0 28px 28px)', transition: { duration: 0.4, ease: [0.7, 0, 0.84, 0] } }}
+          transition={{ duration: 0.6, ease }}
+        >
+          <nav className="msheet-nav" aria-label="Primary">
+            {SECTIONS.map((id, i) => (
+              <motion.a
+                key={id}
+                href={`#${id}`}
+                className="msheet-link"
+                aria-current={active === id ? 'true' : undefined}
+                onClick={onGo(`#${id}`)}
+                initial={{ opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease, delay: 0.12 + i * 0.06 }}
+              >
+                {labels[id]}
+                <ArrowUpRight />
+              </motion.a>
+            ))}
+          </nav>
+
+          <motion.div
+            className="msheet-foot"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease, delay: 0.34 }}
+          >
+            <p className="msheet-label">{t.nav.elsewhere}</p>
+            <div className="msheet-socials">
+              {socials.map((s) => (
+                <a key={s.label} href={s.href} aria-label={s.label} {...(s.ext ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+                  {s.icon}
+                </a>
+              ))}
+            </div>
+            <LiquidMetal className="msheet-cta" href={whatsappLink(t.hero.whatsappText)} target="_blank" rel="noopener noreferrer">
+              <WhatsApp />
+              {t.nav.talk}
+            </LiquidMetal>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}
 
 export function TopBar() {
   const { t } = useLang()
@@ -62,7 +166,14 @@ export function TopBar() {
   const scrollTo = useScrollTo()
   const [hidden, setHidden] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const menuBtn = useRef(null)
   const active = useActiveSection(SECTIONS)
+
+  const closeMenu = () => {
+    setMenuOpen(false)
+    requestAnimationFrame(() => menuBtn.current?.focus({ preventScroll: true }))
+  }
 
   // Steps aside while reading down, returns on the way back up.
   useEffect(() => {
@@ -86,13 +197,21 @@ export function TopBar() {
     e.preventDefault()
     scrollTo(id)
   }
+  // From the sheet: close first (which restarts smooth scroll), then travel.
+  const goFromMenu = (id) => (e) => {
+    e.preventDefault()
+    setMenuOpen(false)
+    setTimeout(() => scrollTo(id), 60)
+  }
 
   const labels = { work: t.nav.work, about: t.nav.about, contact: t.nav.contact }
 
   return (
+    <>
+    <MobileMenu open={menuOpen} onClose={closeMenu} active={active} labels={labels} onGo={goFromMenu} />
     <motion.header
-      className={`topbar${scrolled ? ' is-scrolled' : ''}`}
-      animate={{ y: hidden ? '-130%' : '0%' }}
+      className={`topbar${scrolled ? ' is-scrolled' : ''}${menuOpen ? ' is-menu' : ''}`}
+      animate={{ y: hidden && !menuOpen ? '-130%' : '0%' }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
     >
       <a href="#top" className="wordmark" onClick={go('#top')}>
@@ -114,7 +233,20 @@ export function TopBar() {
           <WhatsApp />
           <span className="btn-sm-label">{t.nav.talk}</span>
         </LiquidMetal>
+        <button
+          ref={menuBtn}
+          type="button"
+          className={`menu-btn glass${menuOpen ? ' is-open' : ''}`}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+          aria-label={menuOpen ? t.nav.closeMenu : t.nav.menu}
+          onClick={() => (menuOpen ? closeMenu() : setMenuOpen(true))}
+        >
+          <span className="menu-btn-line" />
+          <span className="menu-btn-line" />
+        </button>
       </div>
     </motion.header>
+    </>
   )
 }

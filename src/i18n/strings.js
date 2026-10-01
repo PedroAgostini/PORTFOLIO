@@ -16,7 +16,7 @@ export const strings = {
         'Pedro de Agostini, mid-level web developer specializing in websites, SaaS products and e-commerce for companies in Brazil and the United States.',
     },
     skip: 'Skip to content',
-    nav: { work: 'Work', career: 'Career', about: 'About', contact: 'Contact', talk: "Let's talk", langLabel: 'Language' },
+    nav: { work: 'Work', career: 'Career', about: 'About', contact: 'Contact', talk: "Let's talk", langLabel: 'Language', menu: 'Open menu', closeMenu: 'Close menu', elsewhere: 'Social media' },
     chapters: { work: 'Work' },
     hero: {
       lines: ['Websites and SaaS', 'Made to Perform,', 'Ready to Grow.'],
@@ -138,7 +138,7 @@ export const strings = {
         'Pedro de Agostini, desenvolvedor web pleno e especialista em websites, produtos SaaS e e-commerce para empresas no Brasil e nos Estados Unidos.',
     },
     skip: 'Pular para o conteúdo',
-    nav: { work: 'Projetos', career: 'Trajetória', about: 'Sobre', contact: 'Contato', talk: 'Vamos conversar', langLabel: 'Idioma' },
+    nav: { work: 'Projetos', career: 'Trajetória', about: 'Sobre', contact: 'Contato', talk: 'Vamos conversar', langLabel: 'Idioma', menu: 'Abrir menu', closeMenu: 'Fechar menu', elsewhere: 'Redes sociais' },
     chapters: { work: 'Projetos' },
     hero: {
       lines: ['Websites e SaaS', 'feitos para funcionar,', 'prontos para crescer.'],
