@@ -212,6 +212,7 @@ p {
   width: 18px;
   height: 18px;
   flex: none;
+  color: #fff;
   transition: transform 0.45s var(--ease-out);
 }
 /* Tactile press: every button gives a little under the finger. */
@@ -346,8 +347,8 @@ p {
   transform: scaleY(1.25);
 }
 .lm--ember .lm-label svg {
-  color: #ff3d6a;
-  filter: drop-shadow(0 0 6px rgb(230 0 57 / 0.55));
+  color: #fff;
+  filter: drop-shadow(0 0 6px rgb(255 255 255 / 0.28));
 }
 .lm--ember:hover {
   box-shadow:
@@ -400,7 +401,7 @@ p {
   font-weight: 600;
 }
 .lm--ivory .lm-label svg {
-  color: var(--live);
+  color: #fff;
 }
 
 .lm-label {
@@ -416,6 +417,7 @@ p {
   width: 18px;
   height: 18px;
   flex: none;
+  color: #fff;
 }
 .lm.is-pressed .lm-core {
   transform: translateY(1px) scale(0.985);

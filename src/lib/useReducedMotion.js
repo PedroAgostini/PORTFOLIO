@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react'
 // Touch devices and constrained hardware favor immediate, static presentation.
 // This keeps the same content and styling while avoiding expensive reveal loops,
 // smooth-scroll interception and WebGL effects where they are most likely to jank.
-const QUERY = '(prefers-reduced-motion: reduce), (pointer: coarse)'
+const MOTION_QUERY = '(prefers-reduced-motion: reduce)'
+const QUERY = `${MOTION_QUERY}, (pointer: coarse)`
 
 const shouldReduce = () =>
   window.matchMedia(QUERY).matches ||
@@ -23,6 +24,18 @@ export function useReducedMotion() {
       mq.removeEventListener('change', onChange)
       connection?.removeEventListener?.('change', onChange)
     }
+  }, [])
+  return reduced
+}
+
+/** Accessibility preference only, for effects that provide their own low-cost mobile mode. */
+export function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(() => window.matchMedia(MOTION_QUERY).matches)
+  useEffect(() => {
+    const mq = window.matchMedia(MOTION_QUERY)
+    const onChange = () => setReduced(mq.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
   }, [])
   return reduced
 }

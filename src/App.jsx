@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { LanguageProvider, useLang } from './i18n/LanguageContext'
 import { EMAIL, GITHUB, LINKEDIN } from './i18n/strings'
 import { SmoothScroll, useScrollTo } from './lib/SmoothScroll'
-import { hasWebGL, useReducedMotion } from './lib/useReducedMotion'
+import { hasWebGL, usePrefersReducedMotion, useReducedMotion } from './lib/useReducedMotion'
 import { TopBar } from './components/TopBar'
 import { Hero } from './components/Hero'
 import { Work } from './components/WorkStage'
@@ -68,6 +68,7 @@ function Footer() {
 function Show() {
   const { t } = useLang()
   const reduced = useReducedMotion()
+  const shaderReduced = usePrefersReducedMotion()
   const [webgl] = useState(hasWebGL)
   const staged = webgl && !reduced
 
@@ -81,7 +82,7 @@ function Show() {
         {/* One flow field behind the whole site: a single continuous surface from hero to footer. */}
         <div className="flow-zone">
           <div className="flow-bg" aria-hidden="true">
-            <ShaderBackground className="flow-shader" reduced={reduced} />
+            <ShaderBackground className="flow-shader" reduced={shaderReduced} />
           </div>
           <Hero staged={staged} />
           <Work />

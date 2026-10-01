@@ -244,6 +244,51 @@ void main() {
 }
 `
 
+// Dedicated mobile fragment: the same crimson flow language without the desktop
+// shader's blur taps, cursor branches, colour conversions, grain or unused uniforms.
+const MOBILE_FRAG = `precision mediump float;
+uniform vec4 u_scene;
+
+float hash21(vec2 p) {
+  p = fract(p * vec2(234.34, 435.345));
+  p += dot(p, p + 34.23);
+  return fract(p.x * p.y);
+}
+
+float noise(vec2 p) {
+  vec2 i = floor(p);
+  vec2 f = fract(p);
+  vec2 u = f * f * (3.0 - 2.0 * f);
+  return mix(
+    mix(hash21(i), hash21(i + vec2(1.0, 0.0)), u.x),
+    mix(hash21(i + vec2(0.0, 1.0)), hash21(i + vec2(1.0, 1.0)), u.x),
+    u.y);
+}
+
+float fbm2(vec2 p) {
+  return noise(p) * 0.67 + noise(p * 2.03 + vec2(17.0, 9.2)) * 0.33;
+}
+
+void main() {
+  vec2 resolution = u_scene.xy;
+  float time = u_scene.z;
+  vec2 screenUv = gl_FragCoord.xy / resolution;
+  vec2 p = (gl_FragCoord.xy - 0.5 * resolution) / min(resolution.x, resolution.y);
+  p *= 1.5;
+  p += 0.08 * vec2(sin(time * 0.31), cos(time * 0.23));
+
+  float angle = fbm2(p * 2.0 + 7.0) * 6.2831;
+  vec2 direction = vec2(cos(angle), sin(angle));
+  float value = fbm2(p * 3.0 + direction * 0.95 + time * 0.12);
+
+  vec3 colour = mix(vec3(0.025), vec3(0.42, 0.0, 0.10), smoothstep(0.20, 0.68, value));
+  colour = mix(colour, vec3(0.90, 0.0, 0.22), smoothstep(0.72, 0.98, value));
+  float vignette = smoothstep(0.32, 1.0, length(screenUv - 0.5) * 1.4142);
+  colour *= 1.0 - vignette * 0.61;
+  gl_FragColor = vec4(colour, 1.0);
+}
+`
+
 const VERT = `attribute vec2 a_position;
 void main() { gl_Position = vec4(a_position, 0.0, 1.0); }`
 
@@ -261,6 +306,12 @@ const U = {
   transform: [7.0, 0.0, 0.16, 0.0],
   space: [0.0, 0.0, 0.0, 0.0],
   cursor: [0.0, 4.0, 0.65, 0.3], // cursor off
+}
+
+const MOBILE_U = {
+  ...U,
+  finish: [0.0, 0.61, 0.0, 0.0],
+  transform: [7.0, 0.0, 0.08, 0.0],
 }
 
 function compile(gl, type, src) {
@@ -281,13 +332,21 @@ export function ShaderBackground({ className = '', reduced = false }) {
 
   useEffect(() => {
     const canvas = canvasRef.current
-    if (reduced) return undefined
+    const connection = navigator.connection
+    if (reduced || connection?.saveData) return undefined
+
+    const coarse = window.matchMedia('(pointer: coarse)').matches
+    const memory = navigator.deviceMemory ?? 8
+    const cores = navigator.hardwareConcurrency ?? 8
+    const lowPower = coarse || memory <= 4 || cores <= 4
+    const veryLowPower = memory <= 2 || cores <= 4
+    const settings = lowPower ? MOBILE_U : U
 
     const gl = canvas.getContext('webgl', { antialias: false, alpha: false, premultipliedAlpha: false, powerPreference: 'low-power' })
     if (!gl) return
 
     const vs = compile(gl, gl.VERTEX_SHADER, VERT)
-    const fs = compile(gl, gl.FRAGMENT_SHADER, FRAG)
+    const fs = compile(gl, gl.FRAGMENT_SHADER, lowPower ? MOBILE_FRAG : FRAG)
     if (!vs || !fs) return
     const prog = gl.createProgram()
     gl.attachShader(prog, vs)
@@ -311,16 +370,16 @@ export function ShaderBackground({ className = '', reduced = false }) {
     const colors = new Float32Array(24)
     COLORS.forEach((c, i) => colors.set(hex(c), i * 3))
     gl.uniform3fv(uni('u_colors'), colors)
-    gl.uniform4fv(uni('u_shape'), U.shape)
-    gl.uniform4fv(uni('u_surface'), U.surface)
-    gl.uniform4fv(uni('u_finish'), U.finish)
-    gl.uniform4fv(uni('u_transform'), U.transform)
-    gl.uniform4fv(uni('u_space'), U.space)
-    gl.uniform4fv(uni('u_cursor'), U.cursor)
+    gl.uniform4fv(uni('u_shape'), settings.shape)
+    gl.uniform4fv(uni('u_surface'), settings.surface)
+    gl.uniform4fv(uni('u_finish'), settings.finish)
+    gl.uniform4fv(uni('u_transform'), settings.transform)
+    gl.uniform4fv(uni('u_space'), settings.space)
+    gl.uniform4fv(uni('u_cursor'), settings.cursor)
     const uScene = uni('u_scene')
 
-    const pixelRatio = Math.min(window.devicePixelRatio || 1, 1)
-    const frameInterval = 1000 / 24
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, veryLowPower ? 0.25 : lowPower ? 0.3 : 1)
+    const frameInterval = 1000 / (veryLowPower ? 4 : lowPower ? 6 : 24)
 
     const resize = () => {
       const w = Math.max(1, Math.round(canvas.clientWidth * pixelRatio))
@@ -336,28 +395,31 @@ export function ShaderBackground({ className = '', reduced = false }) {
 
     const start = performance.now()
     let raf = 0
+    let timer = 0
     let running = false
     let onScreen = true
-    let lastDraw = 0
 
     const draw = (now) => {
       gl.uniform4f(uScene, canvas.width, canvas.height, ((now - start) / 1000) * 0.86, COLORS.length)
       gl.drawArrays(gl.TRIANGLES, 0, 3)
     }
-    const loop = (now) => {
-      if (now - lastDraw >= frameInterval) {
-        draw(now)
-        lastDraw = now
-      }
-      raf = requestAnimationFrame(loop)
+    const schedule = () => {
+      timer = window.setTimeout(() => {
+        raf = requestAnimationFrame((now) => {
+          if (!running) return
+          draw(now)
+          schedule()
+        })
+      }, frameInterval)
     }
     const play = () => {
       if (running || document.hidden || !onScreen) return
       running = true
-      raf = requestAnimationFrame(loop)
+      schedule()
     }
     const pause = () => {
       running = false
+      window.clearTimeout(timer)
       cancelAnimationFrame(raf)
     }
 
