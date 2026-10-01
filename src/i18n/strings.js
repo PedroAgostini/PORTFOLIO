@@ -47,7 +47,7 @@ export const strings = {
       dockLabel: 'Contact',
     },
     statement:
-      'I create websites and web systems that bring strategy, design and development together, from the first idea to a polished digital experience.',
+      'I create websites and web systems that bring strategy, design and development together, from the first idea to a digital experience that delivers results.',
     career: {
       title: 'Five Years. Four Roles. One Direction.',
       sub: 'A career shaped by technology, now focused on websites and digital products.',
@@ -170,7 +170,7 @@ export const strings = {
       dockLabel: 'Contato',
     },
     statement:
-      'Crio websites e sistemas que unem estratégia, design e desenvolvimento, da primeira ideia a uma experiência digital bem resolvida.',
+      'Crio websites e sistemas que unem estratégia, design e desenvolvimento, da primeira ideia a uma experiência digital que gera resultados.',
     career: {
       title: 'Cinco anos. Quatro funções. Uma direção.',
       sub: 'Uma carreira construída em tecnologia, hoje focada em websites e produtos digitais.',
