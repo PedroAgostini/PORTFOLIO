@@ -1868,8 +1868,12 @@
   position: sticky;
   top: 0;
   z-index: -1;
-  height: 100svh;
-  margin-bottom: -100svh;
+  /* lvh: iOS Safari grows the viewport when its toolbar collapses on scroll;
+     svh would leave an uncovered band at the bottom. */
+  height: 100vh;
+  height: 100lvh;
+  margin-bottom: -100vh;
+  margin-bottom: -100lvh;
   overflow: hidden;
   pointer-events: none;
 }
@@ -1882,8 +1886,12 @@
   position: sticky;
   top: 0;
   z-index: -1;
-  height: 100svh;
-  margin-bottom: -100svh;
+  /* lvh, not svh: on iPhone the toolbar collapses while scrolling and the
+     visible area grows; the field must already cover that taller viewport. */
+  height: 100vh;
+  height: 100lvh;
+  margin-bottom: -100vh;
+  margin-bottom: -100lvh;
   overflow: hidden;
   pointer-events: none;
 }
