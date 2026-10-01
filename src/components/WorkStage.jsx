@@ -34,7 +34,14 @@ function ProjectCaption({ project }) {
     <motion.div className="caption" initial="hidden" animate="show" exit="exit">
       <h3 className="cap-name cap-logo">
         <Line i={1}>
-          <img src={project.wordmark} alt={project.name} className={`cap-logo-img cap-logo--${project.slug}`} decoding="async" />
+          <img
+            src={project.wordmark}
+            alt={project.name}
+            className={`cap-logo-img cap-logo--${project.slug}`}
+            loading="lazy"
+            decoding="async"
+            fetchPriority="low"
+          />
         </Line>
       </h3>
       <Line i={2} className="mono cap-spec">
@@ -126,6 +133,9 @@ function Laptop({ project }) {
               srcSet={`${project.image.replace('.webp', '-sm.webp')} 640w, ${project.image} 1024w`}
               sizes="(max-width: 899px) 90vw, 45vw"
               alt={`${project.name} — ${project.domain}`}
+              loading="lazy"
+              decoding="async"
+              fetchPriority="low"
             />
           </motion.div>
         </AnimatePresence>

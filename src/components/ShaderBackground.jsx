@@ -281,6 +281,8 @@ export function ShaderBackground({ className = '', reduced = false }) {
 
   useEffect(() => {
     const canvas = canvasRef.current
+    if (reduced) return undefined
+
     const gl = canvas.getContext('webgl', { antialias: false, alpha: false, premultipliedAlpha: false, powerPreference: 'low-power' })
     if (!gl) return
 
@@ -317,33 +319,40 @@ export function ShaderBackground({ className = '', reduced = false }) {
     gl.uniform4fv(uni('u_cursor'), U.cursor)
     const uScene = uni('u_scene')
 
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 1)
+    const frameInterval = 1000 / 24
+
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2)
-      const w = Math.max(1, Math.round(canvas.clientWidth * dpr))
-      const h = Math.max(1, Math.round(canvas.clientHeight * dpr))
+      const w = Math.max(1, Math.round(canvas.clientWidth * pixelRatio))
+      const h = Math.max(1, Math.round(canvas.clientHeight * pixelRatio))
       if (canvas.width !== w || canvas.height !== h) {
         canvas.width = w
         canvas.height = h
         gl.viewport(0, 0, w, h)
+        return true
       }
+      return false
     }
 
     const start = performance.now()
     let raf = 0
     let running = false
     let onScreen = true
+    let lastDraw = 0
 
     const draw = (now) => {
-      resize()
       gl.uniform4f(uScene, canvas.width, canvas.height, ((now - start) / 1000) * 0.86, COLORS.length)
       gl.drawArrays(gl.TRIANGLES, 0, 3)
     }
     const loop = (now) => {
-      draw(now)
+      if (now - lastDraw >= frameInterval) {
+        draw(now)
+        lastDraw = now
+      }
       raf = requestAnimationFrame(loop)
     }
     const play = () => {
-      if (running || reduced || document.hidden || !onScreen) return
+      if (running || document.hidden || !onScreen) return
       running = true
       raf = requestAnimationFrame(loop)
     }
@@ -352,7 +361,7 @@ export function ShaderBackground({ className = '', reduced = false }) {
       cancelAnimationFrame(raf)
     }
 
-    // Reduced motion: one still frame, no loop.
+    resize()
     draw(performance.now())
     play()
 
@@ -368,7 +377,7 @@ export function ShaderBackground({ className = '', reduced = false }) {
     io.observe(canvas)
 
     const ro = new ResizeObserver(() => {
-      if (!running) draw(performance.now())
+      if (resize()) draw(performance.now())
     })
     ro.observe(canvas)
 

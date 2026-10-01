@@ -14,7 +14,7 @@ import { About } from './components/About'
 import { Contact } from './components/Contact'
 import { GitHub, LinkedIn, Mail } from './components/Icons'
 
-const BRAND_LOGO = `${import.meta.env.BASE_URL}logos/web/devagostini-logo-header.png`
+const BRAND_LOGO = `${import.meta.env.BASE_URL}logos/web/devagostini-logo-header.webp`
 
 function Footer() {
   const { t } = useLang()
@@ -28,7 +28,14 @@ function Footer() {
     <footer className="footer section">
       <div className="footer-inner">
         <a className="footer-brand" href="#top" onClick={go('#top')} aria-label={t.footer.home}>
-          <img src={BRAND_LOGO} alt="DevAgostini" width="2082" height="269" />
+          <img
+            src={BRAND_LOGO}
+            alt="DevAgostini"
+            width="640"
+            height="83"
+            loading="lazy"
+            decoding="async"
+          />
         </a>
 
         <nav className="footer-nav" aria-label={t.footer.navigation}>

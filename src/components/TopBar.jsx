@@ -8,7 +8,7 @@ import { ArrowUpRight, GitHub, LinkedIn, Mail, WhatsApp } from './Icons'
 import { LiquidMetal } from './LiquidMetal'
 
 const spring = { type: 'spring', stiffness: 420, damping: 34 }
-const BRAND_LOGO = `${import.meta.env.BASE_URL}logos/web/devagostini-logo-header.png`
+const BRAND_LOGO = `${import.meta.env.BASE_URL}logos/web/devagostini-logo-header.webp`
 
 function LangToggle() {
   const { lang, setLang, t } = useLang()
@@ -215,7 +215,15 @@ export function TopBar() {
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
     >
       <a href="#top" className="wordmark" onClick={go('#top')}>
-        <img className="wordmark-logo" src={BRAND_LOGO} alt="DevAgostini" width="2082" height="269" />
+        <img
+          className="wordmark-logo"
+          src={BRAND_LOGO}
+          alt="DevAgostini"
+          width="640"
+          height="83"
+          decoding="async"
+          fetchPriority="high"
+        />
       </a>
 
       <nav className="navpill glass" aria-label="Primary">

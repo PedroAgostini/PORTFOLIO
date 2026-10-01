@@ -1,5 +1,4 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import Lenis from 'lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useReducedMotion } from './useReducedMotion'
@@ -23,16 +22,27 @@ export function SmoothScroll({ children }) {
   }, [])
 
   useEffect(() => {
-    if (reduced) return
-    const instance = new Lenis({ lerp: 0.085, wheelMultiplier: 0.95, touchMultiplier: 1.4 })
-    instance.on('scroll', ScrollTrigger.update)
-    const tick = (time) => instance.raf(time * 1000)
-    gsap.ticker.add(tick)
-    gsap.ticker.lagSmoothing(0)
-    setLenis(instance)
+    // Native scrolling is substantially cheaper and more responsive on touch devices.
+    if (reduced || window.matchMedia('(pointer: coarse)').matches) return undefined
+
+    let disposed = false
+    let instance
+    let tick
+
+    import('lenis').then(({ default: Lenis }) => {
+      if (disposed) return
+      instance = new Lenis({ lerp: 0.085, wheelMultiplier: 0.95 })
+      instance.on('scroll', ScrollTrigger.update)
+      tick = (time) => instance.raf(time * 1000)
+      gsap.ticker.add(tick)
+      gsap.ticker.lagSmoothing(0)
+      setLenis(instance)
+    })
+
     return () => {
-      gsap.ticker.remove(tick)
-      instance.destroy()
+      disposed = true
+      if (tick) gsap.ticker.remove(tick)
+      instance?.destroy()
       setLenis(null)
     }
   }, [reduced])

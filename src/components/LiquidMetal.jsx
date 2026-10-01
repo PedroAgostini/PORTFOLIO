@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { ShaderMount, liquidMetalFragmentShader, LiquidMetalShapes, ShaderFitOptions } from '@paper-design/shaders'
 import { useReducedMotion } from '../lib/useReducedMotion'
 
 // Chrome with a faint warm cast (colour-burn tint), so the metal belongs to the crimson palette.
-const UNIFORMS = {
+const BASE_UNIFORMS = {
   u_colorBack: [0, 0, 0, 0],
-  u_colorTint: [1, 0.86, 0.88, 1],
   u_repetition: 4,
   u_softness: 0.5,
   u_shiftRed: 0.3,
@@ -14,9 +12,7 @@ const UNIFORMS = {
   u_contour: 0,
   u_angle: 45,
   // As in the reference: an oversized circle, so the chrome bump wraps the whole pill.
-  u_shape: LiquidMetalShapes.circle,
   u_isImage: false,
-  u_fit: ShaderFitOptions.contain,
   u_scale: 8,
   u_rotation: 0,
   u_offsetX: 0.1,
@@ -31,6 +27,18 @@ const UNIFORMS = {
 const REST = 0.6
 const HOVER = 1
 const BURST = 2.4
+
+const supportsAnimatedRim = () => {
+  const connection = navigator.connection
+  const memory = navigator.deviceMemory ?? 8
+  const cores = navigator.hardwareConcurrency ?? 8
+  return (
+    !window.matchMedia('(pointer: coarse)').matches &&
+    !connection?.saveData &&
+    memory > 4 &&
+    cores > 4
+  )
+}
 
 /**
  * Liquid-metal button: an animated chrome rim (paper-design LiquidMetal shader)
@@ -51,31 +59,62 @@ export function LiquidMetal({ as: Tag = 'a', size = 'md', tone = 'ember', classN
   const mount = useRef(null)
   const hovered = useRef(false)
   const reduced = useReducedMotion()
-  const [fallback, setFallback] = useState(false)
+  const [fallback, setFallback] = useState(true)
+  const [shaderRequested, setShaderRequested] = useState(false)
   const [pressed, setPressed] = useState(false)
   const [ripples, setRipples] = useState([])
   const rippleId = useRef(0)
 
   useEffect(() => {
-    let io
-    try {
-      const uniforms = { ...UNIFORMS, u_colorTint: TINTS[tone] ?? TINTS.live }
-      mount.current = new ShaderMount(rimRef.current, liquidMetalFragmentShader, uniforms, { alpha: true, premultipliedAlpha: false }, reduced ? 0 : REST, 12000)
-      // Rest while scrolled away: a button nobody can see does not need to shimmer.
-      io = new IntersectionObserver(([entry]) => {
-        mount.current?.setSpeed(entry.isIntersecting && !reduced ? (hovered.current ? HOVER : REST) : 0)
-      })
-      io.observe(rootRef.current)
-    } catch (err) {
-      console.warn('[LiquidMetal] WebGL unavailable, using CSS rim', err)
+    if (!shaderRequested || reduced || !supportsAnimatedRim()) {
       setFallback(true)
+      return undefined
     }
+
+    let cancelled = false
+    let io
+
+    import('@paper-design/shaders')
+      .then(({ ShaderMount, liquidMetalFragmentShader, LiquidMetalShapes, ShaderFitOptions }) => {
+        if (cancelled || !rimRef.current || !rootRef.current) return
+        const uniforms = {
+          ...BASE_UNIFORMS,
+          u_colorTint: TINTS[tone] ?? TINTS.live,
+          u_shape: LiquidMetalShapes.circle,
+          u_fit: ShaderFitOptions.contain,
+        }
+        const instance = new ShaderMount(
+          rimRef.current,
+          liquidMetalFragmentShader,
+          uniforms,
+          { alpha: true, premultipliedAlpha: false },
+          hovered.current ? HOVER : REST,
+          12000,
+        )
+        if (cancelled) {
+          instance.dispose()
+          return
+        }
+        mount.current = instance
+        setFallback(false)
+
+        // Rest while scrolled away: a button nobody can see does not need to shimmer.
+        io = new IntersectionObserver(([entry]) => {
+          instance.setSpeed(entry.isIntersecting ? (hovered.current ? HOVER : REST) : 0)
+        })
+        io.observe(rootRef.current)
+      })
+      .catch((err) => {
+        if (!cancelled) console.warn('[LiquidMetal] WebGL unavailable, using CSS rim', err)
+      })
+
     return () => {
+      cancelled = true
       io?.disconnect()
       mount.current?.dispose()
       mount.current = null
     }
-  }, [reduced, tone])
+  }, [reduced, shaderRequested, tone])
 
   const setSpeed = (s) => {
     if (!reduced) mount.current?.setSpeed(s)
@@ -97,6 +136,7 @@ export function LiquidMetal({ as: Tag = 'a', size = 'md', tone = 'ember', classN
       className={`lm lm--${size} lm--${tone}${pressed ? ' is-pressed' : ''}${fallback ? ' lm--fallback' : ''} ${className}`}
       onPointerEnter={() => {
         hovered.current = true
+        if (!reduced && supportsAnimatedRim()) setShaderRequested(true)
         setSpeed(HOVER)
       }}
       onPointerLeave={() => {
@@ -106,6 +146,15 @@ export function LiquidMetal({ as: Tag = 'a', size = 'md', tone = 'ember', classN
       }}
       onPointerDown={() => setPressed(true)}
       onPointerUp={() => setPressed(false)}
+      onFocus={() => {
+        hovered.current = true
+        if (!reduced && supportsAnimatedRim()) setShaderRequested(true)
+        setSpeed(HOVER)
+      }}
+      onBlur={() => {
+        hovered.current = false
+        setSpeed(REST)
+      }}
       onClick={handleClick}
       {...rest}
     >
