@@ -1,7 +1,7 @@
 {
-  "name": "Pedro de Agostini — Web Developer Portfolio",
+  "name": "Pedro de Agostini — Web Development and AI Agents",
   "short_name": "DevAgostini",
-  "description": "Portfolio of Pedro de Agostini, web developer specializing in websites, web systems and e-commerce.",
+  "description": "Portfolio of Pedro de Agostini, web developer creating websites, web systems, e-commerce experiences and AI agents.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -21,4 +21,3 @@
     }
   ]
 }
-

@@ -255,9 +255,12 @@
 .hero-line {
   display: block;
 }
-/* Boon's split: the middle line steps half a column to the right. */
+/* A measured staircase gives each line its own beat without breaking the reading order. */
 .hero-line-1 {
-  padding-left: calc((100vw - 2 * var(--gutter)) / 6);
+  padding-left: clamp(192px, calc((100vw - 2 * var(--gutter)) / 4.5), 384px);
+}
+.hero-line-2 {
+  padding-left: clamp(64px, 5.5vw, 96px);
 }
 .hero-actions {
   display: flex;
@@ -577,11 +580,14 @@
   padding-block: 26vh 22vh;
 }
 .statement-text {
-  font-size: clamp(1.9rem, 4.3vw, 3.7rem);
+  font-size: clamp(2rem, 4.45vw, 3.9rem);
   line-height: 1.12;
   letter-spacing: -0.035em;
   font-weight: 560;
   max-width: 21em;
+}
+.statement-line {
+  display: block;
 }
 
 /* Everything after the machine leaves sits on the solid stage floor. */
@@ -879,22 +885,26 @@
 .tech-marquee-viewport {
   overflow: hidden;
   border-block: 1px solid var(--line);
+  cursor: grab;
+  touch-action: pan-y pinch-zoom;
+  overscroll-behavior-x: contain;
+  user-select: none;
+  -webkit-user-select: none;
   -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--gutter), #000 calc(100% - var(--gutter)), transparent);
   mask-image: linear-gradient(to right, transparent, #000 var(--gutter), #000 calc(100% - var(--gutter)), transparent);
+}
+.tech-marquee-viewport:focus-visible {
+  outline: 2px solid var(--live);
+  outline-offset: -3px;
+}
+.tech-marquee.is-dragging .tech-marquee-viewport {
+  cursor: grabbing;
 }
 .tech-marquee-track {
   display: flex;
   width: max-content;
-  animation: tech-marquee 42s linear infinite;
-  animation-play-state: paused;
+  transform: translate3d(0, 0, 0);
   will-change: transform;
-}
-.tech-marquee.is-running .tech-marquee-track {
-  animation-play-state: running;
-}
-.tech-marquee:hover .tech-marquee-track,
-.tech-marquee:focus-within .tech-marquee-track {
-  animation-play-state: paused;
 }
 .tech-marquee-set {
   display: flex;
@@ -936,11 +946,6 @@
 }
 .tech-marquee-logo--light {
   filter: grayscale(1) brightness(0) invert(1);
-}
-@keyframes tech-marquee {
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
 }
 .edu-github {
   justify-self: start;
@@ -2291,7 +2296,8 @@
   .hero-rule .cross[style*='--i: 2'] {
     display: none;
   }
-  .hero-line-1 {
+  .hero-line-1,
+  .hero-line-2 {
     padding-left: 0;
   }
   .hero-title {
@@ -2472,27 +2478,6 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-cue-line {
     animation: none;
-  }
-  .tech-marquee {
-    width: 100%;
-    margin-inline: 0;
-  }
-  .tech-marquee-viewport {
-    overflow: visible;
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
-  .tech-marquee-track {
-    width: 100%;
-    animation: none;
-    will-change: auto;
-  }
-  .tech-marquee-set {
-    flex-wrap: wrap;
-    padding-right: 0;
-  }
-  .tech-marquee-set[aria-hidden='true'] {
-    display: none;
   }
 }
 
@@ -2770,7 +2755,10 @@
     padding-block: 96px 72px;
   }
   .statement-text {
-    font-size: clamp(1.6rem, 7.4vw, 2.1rem);
+    font-size: clamp(1.65rem, 7.6vw, 2.2rem);
+  }
+  .statement-line {
+    display: inline;
   }
   .education {
     padding-block: 72px;

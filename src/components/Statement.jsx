@@ -9,6 +9,7 @@ export function Statement() {
   const { t, lang } = useLang()
   const root = useRef(null)
   const reduced = useReducedMotion()
+  const lines = Array.isArray(t.statement) ? t.statement : [t.statement]
 
   useGSAP(
     () => {
@@ -30,9 +31,13 @@ export function Statement() {
   return (
     <section className="statement section" data-chapter="statement" ref={root}>
       <p className="statement-text">
-        {t.statement.split(' ').map((w, i) => (
-          <span className="statement-word" key={`${w}-${i}`}>
-            {w}{' '}
+        {lines.map((line, lineIndex) => (
+          <span className="statement-line" key={line}>
+            {line.split(' ').map((word, wordIndex) => (
+              <span className="statement-word" key={`${word}-${lineIndex}-${wordIndex}`}>
+                {word}{' '}
+              </span>
+            ))}
           </span>
         ))}
       </p>

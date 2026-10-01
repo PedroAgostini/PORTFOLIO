@@ -11,23 +11,23 @@ export const whatsappLink = (text) =>
 export const strings = {
   en: {
     meta: {
-      title: 'Pedro de Agostini | Web Developer Portfolio',
+      title: 'Pedro de Agostini | Web Development & AI Agents',
       description:
-        "Explore Pedro de Agostini's portfolio: corporate websites, e-commerce experiences and web systems built for companies in Brazil and the United States.",
+        "Pedro de Agostini's portfolio: websites, e-commerce experiences, web systems and AI agents for companies in Brazil and the United States.",
     },
     skip: 'Skip to content',
     nav: { work: 'Work', career: 'Career', about: 'About', contact: 'Contact', talk: "Let's talk", langLabel: 'Language', menu: 'Open menu', closeMenu: 'Close menu', elsewhere: 'Social media' },
     chapters: { work: 'Work' },
     hero: {
-      lines: ['Websites and Systems', 'Made to Perform,', 'Ready to Grow.'],
-      sub: "I'm Pedro de Agostini, a mid-level web developer creating corporate websites, e-commerce experiences and web systems for companies in Brazil and the United States, with a focus on clarity, performance and user experience.",
+      lines: ['Websites, Systems', 'and AI Agents', 'Built to Perform.'],
+      sub: "I'm Pedro de Agostini, a mid-level web developer. I build corporate websites, e-commerce experiences and web systems, and I create AI agents for products and workflows.",
       cta: 'Discuss a project',
       secondary: 'View selected work',
-      whatsappText: "Hi Pedro! I saw your portfolio and I'd like to discuss a project.",
+      whatsappText: "Hi Pedro! I saw your portfolio and I'd like to discuss a website, system or AI agent.",
       scroll: 'Explore',
-      role: 'Mid-level Web Developer',
+      role: 'Web Developer · AI Agents',
       place: 'Itapuí, SP · Brazil',
-      focus: ['Websites', 'Web systems', 'E-commerce'],
+      focus: ['Websites', 'Web systems', 'AI agents'],
       localTime: 'Local time',
     },
     work: {
@@ -46,11 +46,15 @@ export const strings = {
       desktop: 'Projects',
       dockLabel: 'Contact',
     },
-    statement:
-      'I create websites and web systems that bring strategy, design and development together, from the first idea to a digital experience that delivers results.',
+    statement: [
+      'I build websites, systems',
+      'and AI agents to remove bottlenecks,',
+      'simplify workflows',
+      'and turn technology into results.',
+    ],
     career: {
       title: 'Five Years. Four Roles. One Direction.',
-      sub: 'A career shaped by technology, now focused on websites and digital products.',
+      sub: 'A career shaped by technology, now focused on web products, AI and agent development.',
       now: 'now',
       items: [
         {
@@ -79,7 +83,7 @@ export const strings = {
           role: 'Mid-level Web Developer',
           org: 'Agência TS',
           place: 'Jaú, SP',
-          text: 'Corporate websites, landing pages and e-commerce experiences built for companies in Brazil and the United States.',
+          text: 'Corporate websites, landing pages and e-commerce experiences for companies in Brazil and the United States. I also use AI and build agents for digital workflows.',
           current: true,
         },
       ],
@@ -91,7 +95,8 @@ export const strings = {
         { k: 'Bachelor’s degree', v: 'Information Systems', org: 'Instituição Toledo de Ensino', years: '2021 — 2024' },
         { k: 'Technology degree', v: 'Systems Analysis and Development', org: 'Instituição Toledo de Ensino', years: '2021 — 2023' },
       ],
-      stackLabel: 'Tools and technologies I work with',
+      stackLabel: 'Web, data and AI tools I work with',
+      stackHint: 'Drag horizontally or use the arrow keys to explore the technologies.',
       stack: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Node.js', 'Tailwind CSS', 'WordPress', 'PHP', 'Laravel', 'MySQL', 'Oracle', 'Python', 'Power BI', 'C++', 'Claude', 'Codex'],
       code: 'Explore my work on GitHub',
     },
@@ -100,10 +105,10 @@ export const strings = {
       cols: { name: 'Project', category: 'Business', company: 'Company', domain: 'Address' },
     },
     about: {
-      title: 'Websites and Systems, From Idea to Launch.',
+      title: 'Websites, Systems and AI Agents, From Idea to Launch.',
       body: [
-        'I’m Pedro de Agostini, a mid-level web developer specializing in websites for companies in Brazil and the United States. I create corporate websites, e-commerce stores and web systems with a focus on clarity, performance and user experience.',
-        'I work across strategy, interface and development to turn business goals into clear digital experiences. Every project is shaped to be fast, intuitive, maintainable and ready to evolve.',
+        'I’m Pedro de Agostini, a mid-level web developer. I create corporate websites, e-commerce stores, web systems and AI agents for companies in Brazil and the United States.',
+        'I work across strategy, interface, development and AI to turn business needs into digital products and agents for real workflows. I build each project to stay fast, intuitive, maintainable and ready to evolve.',
       ],
       motto: {
         parts: [
@@ -123,7 +128,7 @@ export const strings = {
     },
     footer: {
       rights: 'Pedro de Agostini',
-      built: 'Designed and built by me with React, GSAP, Motion and Three.js.',
+      built: 'I designed and built this site with React, GSAP, Three.js and AI-assisted tools.',
       top: 'Back to top',
       home: 'Home',
       navigation: 'Footer navigation',
@@ -134,23 +139,23 @@ export const strings = {
 
   pt: {
     meta: {
-      title: 'Pedro de Agostini | Desenvolvedor Web',
+      title: 'Pedro de Agostini | Desenvolvimento Web e Agentes de IA',
       description:
-        'Portfólio de Pedro de Agostini, desenvolvedor web pleno especializado em sites institucionais, e-commerce e sistemas web para empresas no Brasil e nos EUA.',
+        'Portfólio de Pedro de Agostini: sites, e-commerce, sistemas web e agentes de IA para empresas no Brasil e nos Estados Unidos.',
     },
     skip: 'Pular para o conteúdo',
     nav: { work: 'Projetos', career: 'Trajetória', about: 'Sobre', contact: 'Contato', talk: 'Vamos conversar', langLabel: 'Idioma', menu: 'Abrir menu', closeMenu: 'Fechar menu', elsewhere: 'Redes sociais' },
     chapters: { work: 'Projetos' },
     hero: {
-      lines: ['Websites e sistemas', 'feitos para funcionar,', 'prontos para crescer.'],
-      sub: 'Sou Pedro de Agostini, desenvolvedor web pleno. Crio sites institucionais, experiências de e-commerce e sistemas web para empresas no Brasil e nos Estados Unidos, com foco em clareza, desempenho e experiência do usuário.',
+      lines: ['Sites, sistemas', 'e agentes de IA', 'para gerar resultados.'],
+      sub: 'Sou Pedro de Agostini, desenvolvedor web pleno. Crio sites institucionais, experiências de e-commerce e sistemas web, além de agentes de IA para produtos e fluxos de trabalho.',
       cta: 'Falar sobre um projeto',
       secondary: 'Ver trabalhos selecionados',
-      whatsappText: 'Oi Pedro! Vi seu portfólio e quero conversar sobre um projeto.',
+      whatsappText: 'Oi Pedro! Vi seu portfólio e quero conversar sobre um site, sistema ou agente de IA.',
       scroll: 'Explore',
-      role: 'Desenvolvedor Web Pleno',
+      role: 'Desenvolvedor Web · Agentes de IA',
       place: 'Itapuí, SP · Brasil',
-      focus: ['Websites', 'Sistemas web', 'E-commerce'],
+      focus: ['Websites', 'Sistemas web', 'Agentes de IA'],
       localTime: 'Horário local',
     },
     work: {
@@ -169,11 +174,15 @@ export const strings = {
       desktop: 'Projetos',
       dockLabel: 'Contato',
     },
-    statement:
-      'Crio websites e sistemas que unem estratégia, design e desenvolvimento, da primeira ideia a uma experiência digital que gera resultados.',
+    statement: [
+      'Crio websites, sistemas',
+      'e agentes de IA para resolver gargalos,',
+      'simplificar processos',
+      'e transformar tecnologia em resultado.',
+    ],
     career: {
       title: 'Cinco anos. Quatro funções. Uma direção.',
-      sub: 'Uma carreira construída em tecnologia, hoje focada em websites e produtos digitais.',
+      sub: 'Uma carreira construída em tecnologia, hoje focada em produtos web, IA e desenvolvimento de agentes.',
       now: 'agora',
       items: [
         {
@@ -202,7 +211,7 @@ export const strings = {
           role: 'Desenvolvedor Web Pleno',
           org: 'Agência TS',
           place: 'Jaú, SP',
-          text: 'Sites institucionais, landing pages e experiências de e-commerce para empresas no Brasil e nos Estados Unidos.',
+          text: 'Sites institucionais, landing pages e experiências de e-commerce para empresas no Brasil e nos Estados Unidos. Também uso IA e desenvolvo agentes para fluxos digitais.',
           current: true,
         },
       ],
@@ -214,7 +223,8 @@ export const strings = {
         { k: 'Bacharelado', v: 'Sistemas de Informação', org: 'Instituição Toledo de Ensino', years: '2021 — 2024' },
         { k: 'Tecnólogo', v: 'Análise e Desenvolvimento de Sistemas', org: 'Instituição Toledo de Ensino', years: '2021 — 2023' },
       ],
-      stackLabel: 'Tecnologias e ferramentas com que trabalho',
+      stackLabel: 'Ferramentas de web, dados e IA com que trabalho',
+      stackHint: 'Arraste na horizontal ou use as setas para explorar as tecnologias.',
       stack: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Node.js', 'Tailwind CSS', 'WordPress', 'PHP', 'Laravel', 'MySQL', 'Oracle', 'Python', 'Power BI', 'C++', 'Claude', 'Codex'],
       code: 'Explorar meus projetos no GitHub',
     },
@@ -223,10 +233,10 @@ export const strings = {
       cols: { name: 'Projeto', category: 'Negócio', company: 'Empresa', domain: 'Endereço' },
     },
     about: {
-      title: 'Websites e sistemas, da ideia ao lançamento.',
+      title: 'Websites, sistemas e agentes de IA, da ideia ao lançamento.',
       body: [
-        'Sou Pedro de Agostini, desenvolvedor web pleno e especialista em websites para empresas no Brasil e nos Estados Unidos. Crio sites institucionais, e-commerces e sistemas web com foco em clareza, desempenho e experiência do usuário.',
-        'Trabalho entre estratégia, interface e desenvolvimento para transformar objetivos de negócio em experiências digitais claras. Cada projeto é pensado para ser rápido, intuitivo, fácil de manter e preparado para evoluir.',
+        'Sou Pedro de Agostini, desenvolvedor web pleno. Crio sites institucionais, e-commerces, sistemas web e agentes de IA para empresas no Brasil e nos Estados Unidos.',
+        'Trabalho entre estratégia, interface, desenvolvimento e IA para transformar necessidades de negócio em produtos digitais e agentes para fluxos reais. Faço cada projeto para ser rápido, intuitivo, fácil de manter e preparado para evoluir.',
       ],
       motto: {
         parts: [
@@ -246,7 +256,7 @@ export const strings = {
     },
     footer: {
       rights: 'Pedro de Agostini',
-      built: 'Desenhado e desenvolvido por mim com React, GSAP, Motion e Three.js.',
+      built: 'Criei este site com React, GSAP, Three.js e ferramentas de IA.',
       top: 'Voltar ao topo',
       home: 'Início',
       navigation: 'Navegação do rodapé',

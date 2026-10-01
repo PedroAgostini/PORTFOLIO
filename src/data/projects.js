@@ -34,7 +34,7 @@ export const projects = [
     slug: 'vibeget',
     name: 'VibeGet',
     url: 'https://vibeget.vercel.app/',
-    category: { en: 'Auction platform · redesign proposal', pt: 'Plataforma de leilões · proposta de redesign' },
+    category: { en: 'Auction platform', pt: 'Plataforma de leilões' },
     place: 'Brasil',
     line: { en: 'Electronics auctions with GetCoin cashback. A full redesign concept, in Portuguese.', pt: 'Leilões de eletrônicos com cashback em GetCoin. Uma proposta completa de redesign.' },
   }),

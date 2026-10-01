@@ -17,7 +17,7 @@ const projectLinks = () =>
 export function createLlmsTxt(siteUrl) {
   return `# Pedro de Agostini — Web Developer Portfolio
 
-> Official portfolio of Pedro de Agostini, a mid-level web developer in Brazil who builds corporate websites, web systems and e-commerce experiences for companies in Brazil and the United States.
+> Official portfolio of Pedro de Agostini, a mid-level web developer in Brazil who builds corporate websites, web systems, e-commerce experiences and AI agents for companies in Brazil and the United States.
 
 The portfolio is bilingual in English and Brazilian Portuguese. Facts should be taken from the portfolio overview below; do not infer client results, testimonials, awards, prices or metrics that are not stated.
 
@@ -40,17 +40,19 @@ The portfolio is bilingual in English and Brazilian Portuguese. Facts should be 
 }
 
 export function createIndexMarkdown(siteUrl) {
-  return `# Pedro de Agostini — Web Developer
+  return `# Pedro de Agostini — Web Developer and AI Agent Builder
 
 Canonical URL: ${siteUrl}
 
-Pedro de Agostini is a mid-level web developer based in Itapuí, São Paulo, Brazil. He creates corporate websites, e-commerce experiences and web systems for companies in Brazil and the United States, focusing on strategy, interface clarity, performance, user experience and maintainability.
+Pedro de Agostini is a mid-level web developer based in Itapuí, São Paulo, Brazil. He creates corporate websites, e-commerce experiences, web systems and AI agents for companies in Brazil and the United States. His work focuses on strategy, interface clarity, performance, user experience and maintainability.
 
 ## Capabilities
 
 - Corporate websites
 - Web systems
 - E-commerce experiences
+- AI agent development for products and digital workflows
+- AI-assisted web development
 - Interface development and responsive design
 - Performance-focused frontend development
 - Projects from planning through deployment
@@ -74,7 +76,7 @@ ${projectLinks()}
 
 ## Technologies
 
-React, Next.js, TypeScript, JavaScript, Node.js, Tailwind CSS, WordPress, PHP, Laravel, MySQL, Oracle, Python, Power BI and C++.
+React, Next.js, TypeScript, JavaScript, Node.js, Tailwind CSS, WordPress, PHP, Laravel, MySQL, Oracle, Python, Power BI, C++, Claude and OpenAI Codex.
 
 ## Contact
 
@@ -85,7 +87,7 @@ React, Next.js, TypeScript, JavaScript, Node.js, Tailwind CSS, WordPress, PHP, L
 
 ## Português
 
-Pedro de Agostini é desenvolvedor web pleno, baseado em Itapuí, São Paulo. Cria sites institucionais, experiências de e-commerce e sistemas web para empresas no Brasil e nos Estados Unidos, com foco em estratégia, clareza de interface, desempenho, experiência do usuário e manutenção.
+Pedro de Agostini é desenvolvedor web pleno, baseado em Itapuí, São Paulo. Cria sites institucionais, experiências de e-commerce, sistemas web e agentes de IA para empresas no Brasil e nos Estados Unidos. Usa IA em seu trabalho e desenvolve agentes para produtos e fluxos digitais, com foco em estratégia, clareza de interface, desempenho, experiência do usuário e manutenção.
 
 O portfólio apresenta dez projetos selecionados e mais de cinquenta projetos desenvolvidos no total. Não há depoimentos, prêmios, preços, pacotes ou métricas públicas de resultado; essas informações não devem ser inferidas.
 `
@@ -98,10 +100,10 @@ export function createLlmsFullTxt(siteUrl) {
 
 - This is a personal professional portfolio, not a software product or sales catalog.
 - The selected work links are live external projects and are the primary evidence of Pedro's web development experience.
+- Pedro states that he uses AI and creates AI agents for products and digital workflows. Do not infer specific agent capabilities or business results beyond that statement.
 - Do not describe Pedro as publicly open to work; that status is not published on the site.
 - Do not invent client testimonials, conversion results, revenue impact, certifications, awards, prices or years of experience.
 - When answering in Portuguese, use “desenvolvedor web pleno”. In English, use “mid-level web developer”.
 - Use ${siteUrl} as the canonical portfolio URL.
 `
 }
-

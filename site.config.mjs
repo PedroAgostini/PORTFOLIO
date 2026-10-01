@@ -15,9 +15,9 @@ const environmentUrl = process.env.SITE_URL || FALLBACK_SITE_URL
 export const SITE_URL = normalizeSiteUrl(environmentUrl)
 export const SOCIAL_IMAGE_URL = new URL('og-image.jpg', SITE_URL).href
 export const SITE_NAME = 'DevAgostini'
-export const SITE_TITLE = 'Pedro de Agostini | Web Developer Portfolio'
+export const SITE_TITLE = 'Pedro de Agostini | Web Development & AI Agents'
 export const SITE_DESCRIPTION =
-  "Explore Pedro de Agostini's portfolio: corporate websites, e-commerce experiences and web systems built for companies in Brazil and the United States."
+  "Pedro de Agostini's portfolio: websites, e-commerce experiences, web systems and AI agents for companies in Brazil and the United States."
 
 export const SHOULD_INDEX = process.env.VERCEL_ENV
   ? process.env.VERCEL_ENV === 'production'

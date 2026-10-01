@@ -16,11 +16,11 @@ Recruiters, tech leads, agencies and potential partners evaluating Pedro as a pr
 
 ## Product Purpose
 
-Personal portfolio and professional presence of Pedro de Agostini, mid-level web developer. It demonstrates his work through selected live projects, education and technical experience, and ends in a conversation (WhatsApp, form, LinkedIn, GitHub).
+Personal portfolio and professional presence of Pedro de Agostini, mid-level web developer who uses AI and creates AI agents. It demonstrates his work through selected live projects, education and technical experience, and ends in a conversation (WhatsApp, form, LinkedIn, GitHub).
 
 ## Positioning
 
-Pedro specializes in corporate websites, web systems and e-commerce experiences for companies in Brazil and the United States. The public-facing narrative must stay focused on strategy, interface, performance, user experience and product growth; do not foreground IT support, networking, infrastructure or Oracle. Copy must be impactful and professional, with no theatrical metaphors or generic headlines (owner corrections).
+Pedro specializes in corporate websites, web systems, e-commerce experiences and AI agents for companies in Brazil and the United States. He uses AI in his work and develops agents for products and digital workflows. The public-facing narrative must stay focused on strategy, interface, performance, user experience, AI and product growth; do not foreground IT support, networking, infrastructure or Oracle. Copy must be impactful and professional, with no theatrical metaphors or generic headlines (owner corrections).
 
 ## Career facts (source: LinkedIn, read 2026-09-30)
 

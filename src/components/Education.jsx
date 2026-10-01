@@ -64,7 +64,7 @@ export function Education() {
       </ul>
 
       <div className="edu-extra">
-        <TechnologyMarquee label={e.stackLabel} technologies={e.stack} showLabel={false} />
+        <TechnologyMarquee label={e.stackLabel} hint={e.stackHint} technologies={e.stack} showLabel={false} />
         <Magnetic className="edu-github">
           <LiquidMetal href={GITHUB} target="_blank" rel="noopener noreferrer">
             <GitHub className="edu-github-icon" />
