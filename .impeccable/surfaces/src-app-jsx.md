@@ -11,7 +11,7 @@ Scope: the whole site, one route. Visitor mode: Experience (the work leads), wit
 
 Audience and job: small-business owners (US + BR) judging whether Pedro can make them look credible; agencies/recruiters checking craft. Action: WhatsApp / contact form; secondary LinkedIn, GitHub.
 
-Proof: more than 30 projects created in total, represented by ten selected live projects. Each selected site opens on a 3D MacBook whose lid opens with scroll while the site scrolls itself on screen. Owner-pinned: strong phrase opening; MacBook mockups opening on scroll with the project auto-scrolling; bilingual EN/PT; Slate Dark palette.
+Proof: more than 50 projects created in total, represented by ten selected live projects. Each selected site opens on a 3D MacBook whose lid opens with scroll while the site scrolls itself on screen. Owner-pinned: strong phrase opening; MacBook mockups opening on scroll with the project auto-scrolling; bilingual EN/PT; Slate Dark palette.
 
 Constraints: no invented metrics, testimonials, clients, or locations not shown on the project sites. Must feel human (photo, first-person voice), not template, not heavy on mobile.
 

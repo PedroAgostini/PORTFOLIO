@@ -13,26 +13,27 @@ export const strings = {
     meta: {
       title: 'Pedro de Agostini — Web Developer',
       description:
-        'Pedro de Agostini, mid-level web developer specializing in websites, SaaS products and e-commerce for companies in Brazil and the United States.',
+        'Pedro de Agostini, mid-level web developer specializing in websites, web systems and e-commerce for companies in Brazil and the United States.',
     },
     skip: 'Skip to content',
     nav: { work: 'Work', career: 'Career', about: 'About', contact: 'Contact', talk: "Let's talk", langLabel: 'Language', menu: 'Open menu', closeMenu: 'Close menu', elsewhere: 'Social media' },
     chapters: { work: 'Work' },
     hero: {
-      lines: ['Websites and SaaS', 'Made to Perform,', 'Ready to Grow.'],
-      sub: "I'm Pedro de Agostini, a mid-level web developer creating corporate websites, e-commerce experiences and SaaS products for companies in Brazil and the United States, with a focus on clarity, performance and user experience.",
+      lines: ['Websites and Systems', 'Made to Perform,', 'Ready to Grow.'],
+      sub: "I'm Pedro de Agostini, a mid-level web developer creating corporate websites, e-commerce experiences and web systems for companies in Brazil and the United States, with a focus on clarity, performance and user experience.",
       cta: 'Discuss a project',
       secondary: 'View selected work',
       whatsappText: "Hi Pedro! I saw your portfolio and I'd like to discuss a project.",
       scroll: 'Explore',
       role: 'Mid-level Web Developer',
-      place: 'Itapuí, SP — Brazil',
-      focus: ['Websites', 'SaaS products', 'E-commerce'],
+      place: 'Itapuí, SP · Brazil',
+      focus: ['Websites', 'Web systems', 'E-commerce'],
       localTime: 'Local time',
     },
     work: {
-      intro: 'More Than 30 Projects Built. Explore Ten of Them.',
-      introLines: ['More Than 30 Projects Built.', 'Explore Ten of Them.'],
+      intro: 'More Than 50 Projects Built. Explore Ten of Them.',
+      introLines: ['More Than {count} Projects Built.', 'Explore Ten of Them.'],
+      projectCount: 50,
       introSub: 'Live websites, from planning through deployment.',
       visit: 'Visit site',
       live: 'Live',
@@ -46,7 +47,7 @@ export const strings = {
       dockLabel: 'Contact',
     },
     statement:
-      'I create websites and SaaS products that bring strategy, design and development together, from the first idea to a polished digital experience.',
+      'I create websites and web systems that bring strategy, design and development together, from the first idea to a polished digital experience.',
     career: {
       title: 'Five Years. Four Roles. One Direction.',
       sub: 'A career shaped by technology, now focused on websites and digital products.',
@@ -99,9 +100,9 @@ export const strings = {
       cols: { name: 'Project', category: 'Business', company: 'Company', domain: 'Address' },
     },
     about: {
-      title: 'Websites and SaaS, From Idea to Launch.',
+      title: 'Websites and Systems, From Idea to Launch.',
       body: [
-        'I’m Pedro de Agostini, a mid-level web developer specializing in websites for companies in Brazil and the United States. I create corporate websites, e-commerce stores and SaaS products with a focus on clarity, performance and user experience.',
+        'I’m Pedro de Agostini, a mid-level web developer specializing in websites for companies in Brazil and the United States. I create corporate websites, e-commerce stores and web systems with a focus on clarity, performance and user experience.',
         'I work across strategy, interface and development to turn business goals into clear digital experiences. Every project is shaped to be fast, intuitive, maintainable and ready to evolve.',
       ],
       motto: {
@@ -135,26 +136,27 @@ export const strings = {
     meta: {
       title: 'Pedro de Agostini — Desenvolvedor Web',
       description:
-        'Pedro de Agostini, desenvolvedor web pleno e especialista em websites, produtos SaaS e e-commerce para empresas no Brasil e nos Estados Unidos.',
+        'Pedro de Agostini, desenvolvedor web pleno e especialista em websites, sistemas web e e-commerce para empresas no Brasil e nos Estados Unidos.',
     },
     skip: 'Pular para o conteúdo',
     nav: { work: 'Projetos', career: 'Trajetória', about: 'Sobre', contact: 'Contato', talk: 'Vamos conversar', langLabel: 'Idioma', menu: 'Abrir menu', closeMenu: 'Fechar menu', elsewhere: 'Redes sociais' },
     chapters: { work: 'Projetos' },
     hero: {
-      lines: ['Websites e SaaS', 'feitos para funcionar,', 'prontos para crescer.'],
-      sub: 'Sou Pedro de Agostini, desenvolvedor web pleno. Crio sites institucionais, experiências de e-commerce e produtos SaaS para empresas no Brasil e nos Estados Unidos, com foco em clareza, desempenho e experiência do usuário.',
+      lines: ['Websites e sistemas', 'feitos para funcionar,', 'prontos para crescer.'],
+      sub: 'Sou Pedro de Agostini, desenvolvedor web pleno. Crio sites institucionais, experiências de e-commerce e sistemas web para empresas no Brasil e nos Estados Unidos, com foco em clareza, desempenho e experiência do usuário.',
       cta: 'Falar sobre um projeto',
       secondary: 'Ver trabalhos selecionados',
       whatsappText: 'Oi Pedro! Vi seu portfólio e quero conversar sobre um projeto.',
       scroll: 'Explore',
       role: 'Desenvolvedor Web Pleno',
-      place: 'Itapuí, SP — Brasil',
-      focus: ['Websites', 'Produtos SaaS', 'E-commerce'],
+      place: 'Itapuí, SP · Brasil',
+      focus: ['Websites', 'Sistemas web', 'E-commerce'],
       localTime: 'Horário local',
     },
     work: {
-      intro: 'Mais de 30 projetos construídos. Conheça dez deles.',
-      introLines: ['Mais de 30 projetos construídos.', 'Conheça dez deles.'],
+      intro: 'Mais de 50 projetos construídos. Conheça dez deles.',
+      introLines: ['Mais de {count} projetos construídos.', 'Conheça dez deles.'],
+      projectCount: 50,
       introSub: 'Websites no ar, do planejamento ao deploy.',
       visit: 'Ver site',
       live: 'No ar',
@@ -168,7 +170,7 @@ export const strings = {
       dockLabel: 'Contato',
     },
     statement:
-      'Crio websites e produtos SaaS que unem estratégia, design e desenvolvimento, da primeira ideia a uma experiência digital bem resolvida.',
+      'Crio websites e sistemas que unem estratégia, design e desenvolvimento, da primeira ideia a uma experiência digital bem resolvida.',
     career: {
       title: 'Cinco anos. Quatro funções. Uma direção.',
       sub: 'Uma carreira construída em tecnologia, hoje focada em websites e produtos digitais.',
@@ -221,9 +223,9 @@ export const strings = {
       cols: { name: 'Projeto', category: 'Negócio', company: 'Empresa', domain: 'Endereço' },
     },
     about: {
-      title: 'Websites e SaaS, da ideia ao lançamento.',
+      title: 'Websites e sistemas, da ideia ao lançamento.',
       body: [
-        'Sou Pedro de Agostini, desenvolvedor web pleno e especialista em websites para empresas no Brasil e nos Estados Unidos. Crio sites institucionais, e-commerces e produtos SaaS com foco em clareza, desempenho e experiência do usuário.',
+        'Sou Pedro de Agostini, desenvolvedor web pleno e especialista em websites para empresas no Brasil e nos Estados Unidos. Crio sites institucionais, e-commerces e sistemas web com foco em clareza, desempenho e experiência do usuário.',
         'Trabalho entre estratégia, interface e desenvolvimento para transformar objetivos de negócio em experiências digitais claras. Cada projeto é pensado para ser rápido, intuitivo, fácil de manter e preparado para evoluir.',
       ],
       motto: {

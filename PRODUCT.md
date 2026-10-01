@@ -20,7 +20,7 @@ Personal portfolio and professional presence of Pedro de Agostini, mid-level web
 
 ## Positioning
 
-Pedro specializes in corporate websites, SaaS products and e-commerce experiences for companies in Brazil and the United States. The public-facing narrative must stay focused on strategy, interface, performance, user experience and product growth; do not foreground IT support, networking, infrastructure or Oracle. Copy must be impactful and professional, with no theatrical metaphors or generic headlines (owner corrections).
+Pedro specializes in corporate websites, web systems and e-commerce experiences for companies in Brazil and the United States. The public-facing narrative must stay focused on strategy, interface, performance, user experience and product growth; do not foreground IT support, networking, infrastructure or Oracle. Copy must be impactful and professional, with no theatrical metaphors or generic headlines (owner corrections).
 
 ## Career facts (source: LinkedIn, read 2026-09-30)
 
@@ -54,7 +54,7 @@ Pedro specializes in corporate websites, SaaS products and e-commerce experience
 ## Evidence on Hand
 
 - Portrait: `materiais/pedro.png` (studio headshot, black shirt, dark gray backdrop, 460×460).
-- More than 30 projects created in total. The portfolio shows 10 selected live projects (`projetos.md`): Vibeget, Prime Depot, Shine House Home, Cahari Beauty Spa, WC Painting, Instituto Qualifica Academy, Easy Cleaning ATL, King of Floors, New England Auto Logistics, GGS Painting.
+- More than 50 projects created in total (owner, 2026-10-01). The portfolio shows 10 selected live projects (`projetos.md`): Vibeget, Prime Depot, Shine House Home, Cahari Beauty Spa, WC Painting, Instituto Qualifica Academy, Easy Cleaning ATL, King of Floors, New England Auto Logistics, GGS Painting.
 - Absent: testimonials, client logos, metrics, awards, case-study write-ups. Do not fabricate any of them.
 
 ## Product Principles

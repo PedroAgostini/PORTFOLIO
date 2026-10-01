@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { Fragment, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
@@ -10,6 +10,7 @@ import { useReducedMotion } from '../lib/useReducedMotion'
 import { MacbookPro } from './ui/macbook-pro'
 import { ArrowUpRight, Words } from './Icons'
 import { LiquidMetal } from './LiquidMetal'
+import { CountUp } from './ui/number-flow'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -135,6 +136,19 @@ function Laptop({ project }) {
   )
 }
 
+/** A headline line with the project count rolling in place of `{count}`; the words keep their build-in. */
+function CountLine({ line, count }) {
+  const words = line.split(' ')
+  return words.map((w, i) => (
+    <Fragment key={`${w}-${i}`}>
+      <span className="w">
+        <span>{w === '{count}' ? <CountUp value={count} className="intro-count" /> : w}</span>
+      </span>
+      {i < words.length - 1 ? ' ' : null}
+    </Fragment>
+  ))
+}
+
 /** The pinned sequence: one project per scroll step, its site playing on the MacBook. */
 export function Work() {
   const { t, lang } = useLang()
@@ -195,7 +209,7 @@ export function Work() {
         <h2 className="work-intro-title">
           {t.work.introLines.map((line) => (
             <span className="work-intro-line" key={line}>
-              <Words text={line} />
+              {line.includes('{count}') ? <CountLine line={line} count={t.work.projectCount} /> : <Words text={line} />}
             </span>
           ))}
         </h2>

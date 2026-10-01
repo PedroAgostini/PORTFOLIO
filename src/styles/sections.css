@@ -368,6 +368,14 @@
 .work-intro-line {
   display: block;
 }
+/* The rolling count sits on the headline's baseline, in the headline's weight. */
+.intro-count number-flow-react {
+  font-weight: inherit;
+  font-feature-settings: inherit;
+  line-height: inherit;
+  --number-flow-mask-height: 0.08em;
+  vertical-align: baseline;
+}
 @media (min-width: 900px) {
   .work-intro-line {
     white-space: nowrap;
